@@ -22,11 +22,12 @@
         vm.status = true;
         vm.flag = "create";
 
+        var details = Deliveries.getDetails();
+        console.log(details);
         //If this is an update populate all fields
         //Use boolean field is_update to use a different template
-        if (Deliveries.details && Deliveries.details.stream_name) {
+        if (details && details.stream_name) {
             console.log("This is an update/destroy call");
-            var details = Deliveries.details;
             vm.stream_name = details.stream_name;
             vm.activity_name = details.activity_name;
             vm.view_name = details.view_name;
@@ -46,8 +47,8 @@
          */
         function update() {
             $scope.closeThisDialog();
-
-            Deliveries.update(Deliveries.details.id, vm.stream_name, vm.activity_name, vm.view_name, vm.codereview, vm.jira, vm.description, vm.notes, vm.status)
+            var details = Deliveries.getDetails();
+            Deliveries.update(details.id, vm.stream_name, vm.activity_name, vm.view_name, vm.codereview, vm.jira, vm.description, vm.notes, vm.status)
                 .then(updateDeliverySuccessFn, updateDeliveryErrorFn);
 
             /**
