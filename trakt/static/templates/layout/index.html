@@ -1,0 +1,22 @@
+<div class="col-sm-12">
+	<div class="col-sm-12" ng-cloak>
+		<h1 class="delivery__meta" ng-show="vm.deliveries && vm.deliveries.length">Current Deliveries</h1>
+		<p class="delivery__meta" ng-show="!vm.deliveries.length">No deliveries to show</p>
+		<p ng-show="vm.deliveries && vm.deliveries.length">Filter : <input type="text" ng-model="search"></p>
+		<div ng-repeat="stream in vm.streams">
+			<div ng-repeat="delivery in vm.deliveries | filter:stream | filter:search | orderBy:'updated_at'"
+				style="display: inline-block;padding: 25px;">
+				<h3 ng-show="$first"> {{stream}} </h3>
+				<delivery delivery="delivery" vm="vm" ng-show="vm.deliveries && vm.deliveries.length"></delivery>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Show Add button only when authenticated -->
+<a class="btn btn-primary btn-fab btn-raised mdi-content-add btn-add-new-delivery"
+	href="javascript:void(0)"
+	ng-click="vm.setDetails(None)"
+	ng-show="vm.isAuthenticated"
+	ng-dialog="/static/templates/deliveries/delivery-action.html"
+	ng-dialog-controller="DeliveryController as vm">
+</a>

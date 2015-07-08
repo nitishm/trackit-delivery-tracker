@@ -1,0 +1,29 @@
+[ng\:cloak], [ng-cloak], .ng-cloak {
+display: none !important;
+}
+.no-deliveries-here {
+text-align: center;
+}
+.delivery__meta {
+font-weight: bold;
+text-align: center;
+padding-bottom: 2px;
+}
+.delivery__meta a:hover {
+text-decoration: none;
+}
+.btn-add-new-delivery {
+position: fixed;
+bottom: 20px;
+right: 20px;
+}
+.btn .delivery-info {
+padding: 24px 12px;
+margin: 0 5px;
+border-radius: 0;}
+.ngdialog-content {
+width :600px !important;
+}
+table td {
+border-top: none !important;
+}

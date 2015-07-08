@@ -1,0 +1,57 @@
+<div class="well">
+    <a href="/{{delivery.author.username}}">
+        <span  class="badge label-success" style="margin: 3px;">
+            {{ delivery.author.username }}
+        </span>
+    </a>
+    <a href="javascript:void(0)" ng-show="vm.isAuthenticated" class="btn-xs btn-danger glyphicon glyphicon-remove pull-right" style="margin: 3px;"
+        ng-show="vm.isAuthenticated"
+        ng-click="vm.setDetails(delivery)"
+        ng-dialog="/static/templates/deliveries/destroy-delivery.html"
+        ng-dialog-controller="DeliveryController as vm">
+    </a>
+    <a href="javascript:void(0)" class="btn-xs btn-info glyphicon glyphicon-pencil pull-right" style="margin: 3px;"
+        ng-show="vm.isAuthenticated"
+        ng-click="vm.setDetails(delivery)"
+        ng-dialog="/static/templates/deliveries/delivery-action.html"
+        ng-dialog-controller="DeliveryController as vm">
+    </a>
+    <div class="delivery__meta">
+        <h4>
+        <a href="/{{ delivery.stream_name }}">
+            {{delivery.stream_name}}
+        </a>
+        </h4>
+    </div>
+    <div class="delivery__meta">
+        <h4>{{ delivery.activity_name }}</h4>
+    </div>
+    <div class="delivery__meta">
+        <div class="btn-group btn-group-md">
+            <button
+            ng-click="vm.setDetails(delivery)"
+            ng-dialog="/static/templates/deliveries/delivery-details.html"
+            ng-dialog-controller="DeliveryDetailsController as vm"
+            class="btn btn-success delivery-info">
+            Details
+            </button>
+            <button
+            ng-click="vm.setDetails(delivery)"
+            ng-dialog="/static/templates/deliveries/delivery-details.html"
+            ng-dialog-controller="DeliveryDetailsController as vm"
+            class="btn btn-primary delivery-info">
+            Codereview
+            </button>
+            <button
+            ng-click="vm.setDetails(delivery)"
+            ng-dialog="/static/templates/deliveries/delivery-details.html"
+            ng-dialog-controller="DeliveryDetailsController as vm"
+            class="btn btn-info delivery-info">
+            Jira
+            </button>
+        </div>
+        <div>
+            <small><label for="badge"><span class="badge">{{delivery.updated_at | date:"MM/dd/yyyy H:mm:ss"}}</span></label></small>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,135 @@
+<div ng-switch on="vm.flag">
+	<form role="form" ng-submit="vm.update()" ng-switch-when="update">
+		<div class="form-group">
+			<h3 style="text-align: center;">Update Delivery</h3>
+			<label for="delivery__content">*Stream</label>
+			<input
+			ng-readonly=true
+			class="form-control"
+			id="delivery__content"
+			rows="1"
+			placeholder="ex. KIRK"
+			ng-model="vm.stream_name">
+			</input>
+			<label for="delivery__content">*Activity</label>
+			<input
+			ng-readonly=true
+			class="form-control"
+			id="delivery__content"
+			rows="1"
+			placeholder="ex. jdoe_KIRK_ACMECSBC_12345"
+			ng-model="vm.activity_name">
+			</input>
+			<label for="delivery__content">*View</label>
+			<input
+			ng-readonly=true
+			class="form-control"
+			id="delivery__content"
+			rows="1"
+			placeholder="ex. jdoe_KIRK"
+			ng-model="vm.view_name">
+			</input>
+			<label for="delivery__content">JIRA URL</label>
+			<input class="form-control"
+			id="delivery__content"
+			rows="1"
+			placeholder="ex. https://jira.oraclecorp.com/jira/"
+			ng-model="vm.jira">
+			</input>
+			<label for="delivery__content">Codereview URL</label>
+			<input class="form-control"
+			id="delivery__content"
+			rows="1"
+			placeholder="ex. https://ap-codereview.us.oracle.com/dashboard/r/12345/"
+			ng-model="vm.codereview">
+			</input>
+			<label for="delivery__content">Description</label>
+			<textarea class="form-control"
+			id="delivery__content"
+			rows="1"
+			placeholder="ex. Enter Description Here"
+			ng-model="vm.description">
+			</textarea>
+			<label for="delivery__content">Additional Notes</label>
+			<textarea class="form-control"
+			id="delivery__content"
+			rows="1"
+			placeholder="ex. Enter Notes Here"
+			ng-model="vm.notes">
+			</textarea>
+		</div>
+		<div class="form-group">
+			<button type="submit" class="btn btn-primary">
+			Update
+			</button>
+		</div>
+	</form>
+	<form role="form" ng-submit="vm.create()" ng-switch-when="create" name="createForm">
+		<div class="form-group">
+			<h3 style="text-align: center;">Create Delivery</h3>
+			<label for="delivery__content">*Stream</label>
+			<input class="form-control" name="stream"
+			placeholder="ex. KIRK"
+			ng-model="vm.stream_name"
+			required>
+			</input>
+			<small ng-show="createForm.stream.$error.required">
+			This is a required field.
+			</small>
+			<br ng-show="createForm.stream.$error.required">
+			<label for="delivery__content">*Activity</label>
+			<input class="form-control" name="activity"
+			id="delivery__content"
+			placeholder="ex. jdoe_KIRK_ACMECSBC_12345"
+			ng-model="vm.activity_name"
+			required>
+			</input>
+			<small ng-show="createForm.activity.$error.required">
+			This is a required field.
+			</small>
+			<br ng-show="createForm.activity.$error.required">
+			<label for="delivery__content">*View</label>
+			<input class="form-control" name="view"
+			id="delivery__content"
+			placeholder="ex. jdoe_KIRK"
+			ng-model="vm.view_name"
+			required>
+			</input>
+			<small ng-show="createForm.view.$error.required">
+			This is a required field.
+			</small>
+			<br ng-show="createForm.view.$error.required">
+			<label for="delivery__content">JIRA URL</label>
+			<input class="form-control"
+			id="delivery__content"
+			placeholder="ex. https://jira.oraclecorp.com/jira/"
+			ng-model="vm.jira">
+			</input>
+			<label for="delivery__content">Codereview URL</label>
+			<input class="form-control"
+			id="delivery__content"
+			placeholder="ex. https://ap-codereview.us.oracle.com/dashboard/r/12345/"
+			ng-model="vm.codereview">
+			</input>
+			<label for="delivery__content">Description</label>
+			<textarea class="form-control"
+			id="delivery__content"
+			rows="2"
+			placeholder="ex. Enter Description Here"
+			ng-model="vm.description">
+			</textarea>
+			<label for="delivery__content">Additional Notes</label>
+			<textarea class="form-control"
+			id="delivery__content"
+			rows="2"
+			placeholder="ex. Enter Notes Here"
+			ng-model="vm.notes">
+			</textarea>
+		</div>
+		<div class="form-group">
+			<button type="submit" class="btn btn-primary" ng-disabled="createForm.$invalid">
+			Create
+			</button>
+		</div>
+	</form>
+</div>
