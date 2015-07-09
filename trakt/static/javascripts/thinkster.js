@@ -8,7 +8,10 @@
 			'thinkster.authentication',
 			'thinkster.layout',
 			'thinkster.utils',
-			'thinkster.deliveries'
+			'thinkster.deliveries',
+			'ngMaterial',
+			'ngMessages',
+			'ngAnimate'
 		]);
 
 	angular
@@ -28,6 +31,7 @@
 	 * @desc Update xsrf $http headers to align with Django's defaults
 	 */
 	function run($http, $rootScope, $templateCache) {
+		$.material.init();
 		$http.defaults.xsrfHeaderName = 'X-CSRFToken';
 		$http.defaults.xsrfCookieName = 'csrftoken';
 		$rootScope.$on('$viewContentLoaded', function() {

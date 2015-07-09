@@ -1,57 +1,63 @@
-<div class="well">
-    <a href="/{{delivery.author.username}}">
-        <span  class="badge label-success" style="margin: 3px;">
-            {{ delivery.author.username }}
-        </span>
-    </a>
-    <a href="javascript:void(0)" ng-show="vm.isAuthenticated" class="btn-xs btn-danger glyphicon glyphicon-remove pull-right" style="margin: 3px;"
-        ng-show="vm.isAuthenticated"
-        ng-click="vm.setDetails(delivery)"
-        ng-dialog="/static/templates/deliveries/destroy-delivery.html"
-        ng-dialog-controller="DeliveryController as vm">
-    </a>
-    <a href="javascript:void(0)" class="btn-xs btn-info glyphicon glyphicon-pencil pull-right" style="margin: 3px;"
-        ng-show="vm.isAuthenticated"
-        ng-click="vm.setDetails(delivery)"
-        ng-dialog="/static/templates/deliveries/delivery-action.html"
-        ng-dialog-controller="DeliveryController as vm">
-    </a>
-    <div class="delivery__meta">
-        <h4>
-        <a href="/{{ delivery.stream_name }}">
-            {{delivery.stream_name}}
+<div layout="column">
+    <div class="well">
+        <a href="/{{delivery.author.username}}">
+            <span  class="badge label-success shadow-z-3" style="margin: 3px;">
+                {{ delivery.author.username }}
+            </span>
         </a>
-        </h4>
-    </div>
-    <div class="delivery__meta">
-        <h4>{{ delivery.activity_name }}</h4>
-    </div>
-    <div class="delivery__meta">
-        <div class="btn-group btn-group-md">
-            <button
+        <a href="javascript:void(0)" ng-show="vm.isAuthenticated" class="btn-xs btn-danger glyphicon glyphicon-remove pull-right shadow-z-3" style="margin: 3px;"
+            ng-show="vm.isAuthenticated"
             ng-click="vm.setDetails(delivery)"
-            ng-dialog="/static/templates/deliveries/delivery-details.html"
-            ng-dialog-controller="DeliveryDetailsController as vm"
-            class="btn btn-success delivery-info">
-            Details
-            </button>
-            <button
+            ng-dialog="/static/templates/deliveries/destroy-delivery.html"
+            ng-dialog-controller="DeliveryController as vm">
+            <md-tooltip>
+                Destroy Delivery
+            </md-tooltip>
+        </a>
+        <a href="javascript:void(0)" class="btn-xs btn-info glyphicon glyphicon-pencil pull-right shadow-z-3" style="margin: 3px;"
+            ng-show="vm.isAuthenticated"
             ng-click="vm.setDetails(delivery)"
-            ng-dialog="/static/templates/deliveries/delivery-details.html"
-            ng-dialog-controller="DeliveryDetailsController as vm"
-            class="btn btn-primary delivery-info">
-            Codereview
-            </button>
-            <button
-            ng-click="vm.setDetails(delivery)"
-            ng-dialog="/static/templates/deliveries/delivery-details.html"
-            ng-dialog-controller="DeliveryDetailsController as vm"
-            class="btn btn-info delivery-info">
-            Jira
-            </button>
+            ng-dialog="/static/templates/deliveries/delivery-action.html"
+            ng-dialog-controller="DeliveryController as vm">
+            <md-tooltip>
+                Update Delivery
+            </md-tooltip>        </a>
+        <div class="delivery__meta">
+            <h4>{{ delivery.activity_name | uppercase }}</h4>
         </div>
+        <md-button
+        ng-click="vm.setDetails(delivery)"
+        ng-dialog="/static/templates/deliveries/delivery-details.html"
+        ng-dialog-controller="DeliveryDetailsController as vm"
+        class="btn btn-material-green shadow-z-3">
+        Details
+        <md-tooltip>
+            Delivery Details
+        </md-tooltip>
+        </md-button>
+        <md-button
+        ng-click="vm.setDetails(delivery)"
+        ng-dialog="/static/templates/deliveries/delivery-details.html"
+        ng-dialog-controller="DeliveryDetailsController as vm"
+        class="btn btn-material-deep-orange shadow-z-3">
+        Codereview
+        <md-tooltip>
+            Codereview Details
+        </md-tooltip>        
+        </md-button>
+        <md-button
+        ng-click="vm.setDetails(delivery)"
+        ng-dialog="/static/templates/deliveries/delivery-details.html"
+        ng-dialog-controller="DeliveryDetailsController as vm"
+        class="btn btn-material-blue shadow-z-3">
+        Jira
+        <md-tooltip>
+            Jira Details
+        </md-tooltip>
+        </md-button>
+        <hr/>
         <div>
-            <small><label for="badge"><span class="badge">{{delivery.updated_at | date:"MM/dd/yyyy H:mm:ss"}}</span></label></small>
+            <small><label for="badge"><span class="badge shadow-z-3">{{delivery.updated_at | date:"MM/dd/yyyy H:mm:ss"}}</span></label></small>
         </div>
     </div>
 </div>

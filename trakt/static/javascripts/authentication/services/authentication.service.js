@@ -136,11 +136,11 @@
 		 * @memberOf thinkster.authentication.services.Authentication
 		 */
 		function getAuthenticatedAccount() {
-			if (!$cookies.authenticatedAccount) {
+			if (!$cookies.get('authenticatedAccount')) {
 				return;
 			}
 
-			return JSON.parse($cookies.authenticatedAccount);
+			return $cookies.getObject('authenticatedAccount');
 		}
 
 		/**
@@ -150,7 +150,7 @@
 		 * @memberOf thinkster.authentication.services.Authentication
 		 */
 		function isAuthenticated() {
-			return !!$cookies.authenticatedAccount;
+			return !!$cookies.get('authenticatedAccount');
 		}
 
 		/**
@@ -161,7 +161,7 @@
 		 * @memberOf thinkster.authentication.services.Authentication
 		 */
 		function setAuthenticatedAccount(account) {
-			$cookies.authenticatedAccount = JSON.stringify(account);
+			$cookies.putObject('authenticatedAccount',account);
 		}
 
 		/**
@@ -171,7 +171,7 @@
 		 * @memberOf thinkster.authentication.services.Authentication
 		 */
 		function unauthenticate() {
-			delete $cookies.authenticatedAccount;
+			delete $cookies.remove('authenticatedAccount');
 		}
 
 	}

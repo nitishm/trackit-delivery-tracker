@@ -23,7 +23,6 @@
         vm.flag = "create";
 
         var details = Deliveries.getDetails();
-        console.log(details);
         //If this is an update populate all fields
         //Use boolean field is_update to use a different template
         if (details && details.stream_name) {
@@ -47,6 +46,7 @@
          */
         function update() {
             $scope.closeThisDialog();
+
             var details = Deliveries.getDetails();
             Deliveries.update(details.id, vm.stream_name, vm.activity_name, vm.view_name, vm.codereview, vm.jira, vm.description, vm.notes, vm.status)
                 .then(updateDeliverySuccessFn, updateDeliveryErrorFn);
@@ -80,7 +80,8 @@
         function destroy() {
             $scope.closeThisDialog();
 
-            Deliveries.destroy(Deliveries.details.id)
+            var details = Deliveries.getDetails();
+            Deliveries.destroy(details.id)
                 .then(destroyDeliverySuccessFn, destroyDeliveryErrorFn);
 
             /**
@@ -88,7 +89,7 @@
              * @desc Show snackbar with success message
              */
             function destroyDeliverySuccessFn(data, status, headers, config) {
-                $rootScope.$broadcast('delivery.destroyed', Deliveries.details);
+                $rootScope.$broadcast('delivery.destroyed', details);
                 Snackbar.show('Success! Delivery destroyed.');
             }
 

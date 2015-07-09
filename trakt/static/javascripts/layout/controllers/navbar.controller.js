@@ -16,9 +16,8 @@
 	 */
 	function NavbarController($scope, Authentication) {
 		var vm = this;
-
 		vm.logout = logout;
-
+        vm.streams = ['KIRK', 'KRAMER', 'KESSLER', 'BART', 'HOMER', 'TROI', 'SPOCK'];
 		/**
 		 * @name logout
 		 * @desc Log the user out
