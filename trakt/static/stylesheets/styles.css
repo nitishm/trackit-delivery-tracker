@@ -32,17 +32,14 @@ border-top: none !important;
   position: relative;
   display: block;
 } 
- 
-.animate-enter.animate-enter-active, 
-.animate-leave {
-  opacity: 1;
-  top: 0;
-  height: 30px;
-}
- 
+
 .animate-leave.animate-leave-active,
 .animate-enter {
-  opacity: 0;
-  top: -50px;
-  height: 0px;
+    -webkit-transform: scaleY(0);
+    -moz-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    -o-transform: scaleY(0);
+    transform: scaleY(0);
+    height: 0px;
+    opacity: 0;
 }

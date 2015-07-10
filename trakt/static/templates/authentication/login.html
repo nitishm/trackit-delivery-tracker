@@ -1,21 +1,27 @@
-<div class="row">
-	<div class="col-md-4 col-md-offset-4">
-		<h1>Login</h1>
-		<div class="well">
-			<form role="form" ng-submit="vm.login()">
-				<div class="alert alert-danger" ng-show="error" ng-bind="error"></div>
-				<div class="form-group">
-					<label for="login__email">Email</label>
-					<input type="text" class="form-control" id="login__email" ng-model="vm.email" placeholder="ex. john@example.com" />
-				</div>
-				<div class="form-group">
-					<label for="login__password">Password</label>
-					<input type="password" class="form-control" id="login__password" ng-model="vm.password" placeholder="ex. thisisnotgoogleplus" />
-				</div>
-				<div class="form-group">
-					<button type="submit" class="btn btn-primary">Submit</button>
-				</div>
-			</form>
-		</div>
-	</div>
+<md-content class="md-padding">
+<div layout="row">
+	<span flex></span>
+	<h1 flex='30'>Login</h1>
+	<span flex></span>
 </div>
+<div layout="row">
+	<span flex></span>
+	<div class="well" flex='30'>
+		<form ng-submit="vm.login()" name="loginForm">
+			<md-input-container>
+				<label>Email</label>
+				<input type="text" ng-model="vm.email" required/>
+				<div ng-messages="loginForm.email.$error" ng-if='loginForm.email.$dirty'>
+					<div ng-message="required">This is required.</div>
+				</div>
+			</md-input-container>
+			<md-input-container>
+				<label>Password</label>
+				<input type="password" ng-model="vm.password"/>
+			</md-input-container>
+			<md-button type="submit" class="md-raised md-primary">Submit</md-button>
+		</form>
+	</div>
+	<span flex></span>
+	</div>
+</md-content>

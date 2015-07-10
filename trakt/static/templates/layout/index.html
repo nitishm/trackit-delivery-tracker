@@ -1,29 +1,47 @@
-<md-content class="md-padding">
-	<h1 class="md-display-2" ng-show="vm.deliveries && vm.deliveries.length">Current Deliveries</h1>
+<md-content class="md-padding" style="height: 600px;" layout-fill>
+	<h1 class="md-display-3" ng-show="vm.deliveries && vm.deliveries.length">Current Deliveries</h1>
 	<p class="delivery__meta" ng-show="!vm.deliveries.length">No deliveries to show</p>
-	<md-input-container flex ng-show="vm.deliveries && vm.deliveries.length">
-		<label>Filter</label>
-		<input ng-model="search">
-	</md-input-container>
-	<md-content>
-		<md-chips ng-model="vm.streams" placeholder="Add a stream to view below">
-		</md-chips>
+	<!-- FILTER AND CHIPS -->
+	<div layout="row" class="md-padding">
+		<span flex></span>
+		<div flex='90'>
+			<label>Stream tags</label>
+			<md-chips ng-model="vm.streams" placeholder="Add a stream to view below">
+			</md-chips>
+		</div>
+		<span flex></span>
+	</div>
+	<div layout="row" class="md-padding">
+		<md-input-container ng-show="vm.deliveries && vm.deliveries.length" flex>
+			<label>Filter</label>
+			<input ng-model="search">
+		</md-input-container>
+	</div>
+	<!-- End FILTER AND CHIPS -->
+	<!-- Deliveries main content -->
+	<div class="md-padding">
 		<md-list>
-			<md-list-item class="md-3-line" ng-repeat="stream in vm.streams" ng-animate="'animate'">
-		        <div class="md-list-item-text">
-					<div ng-repeat="delivery in vm.deliveries | filter:stream | filter:search | orderBy:'updated_at'"
-						style="display: inline-block; padding: 25px;">
-						<md-toolbar class="md-theme-dark shadow-z-3">
-							<h2 class="md-toolbar-tools">
+			<!-- Streams loop -->
+			<md-card ng-repeat="stream in vm.streams">
+		        <md-card-title>
+					<md-toolbar class="md-theme-dark shadow-z-3">
+						<h2 class="md-toolbar-tools">
 							<span>{{stream | uppercase}}</span>
-							</h2>
-						</md-toolbar>
+						</h2>
+					</md-toolbar>
+		        </md-card-title>
+		        <md-card-content layout="row" layout-wrap>
+		        	<!-- Deliveries loop -->
+					<div ng-repeat="delivery in vm.deliveries | filter:stream | filter:search | orderBy:'updated_at'"
+						ng-animate="'animate'"
+						style="display: inline-block; padding:25px;"
+						flex='33'>
 						<delivery delivery="delivery" vm="vm" ng-show="vm.deliveries && vm.deliveries.length"></delivery>
-					</div>
-		        </div>
-			</md-list-item>
+					</div><!-- End Deliveries loop -->
+		        </md-card-content><!-- End Streams loop -->
+			</md-card>
 	    </md-list>
-	</md-content>
+	</div>
 	<!-- Show Add button only when authenticated -->
 	<a class="btn btn-primary btn-fab btn-raised mdi-content-add btn-add-new-delivery"
 		href="javascript:void(0)"

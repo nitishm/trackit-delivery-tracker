@@ -1,5 +1,5 @@
 <div layout="column">
-    <div class="well">
+    <div class="well" style="box-shadow: none;">
         <a href="/{{delivery.author.username}}">
             <span  class="badge label-success shadow-z-3" style="margin: 3px;">
                 {{ delivery.author.username }}
@@ -21,15 +21,17 @@
             ng-dialog-controller="DeliveryController as vm">
             <md-tooltip>
                 Update Delivery
-            </md-tooltip>        </a>
-        <div class="delivery__meta">
+            </md-tooltip>        
+        </a>
+        <div>
             <h4>{{ delivery.activity_name | uppercase }}</h4>
         </div>
+        <div layout="row" layout-align="center center">
         <md-button
         ng-click="vm.setDetails(delivery)"
         ng-dialog="/static/templates/deliveries/delivery-details.html"
         ng-dialog-controller="DeliveryDetailsController as vm"
-        class="btn btn-material-green shadow-z-3">
+        class="md-primary md-raised" flex='33'>
         Details
         <md-tooltip>
             Delivery Details
@@ -39,7 +41,7 @@
         ng-click="vm.setDetails(delivery)"
         ng-dialog="/static/templates/deliveries/delivery-details.html"
         ng-dialog-controller="DeliveryDetailsController as vm"
-        class="btn btn-material-deep-orange shadow-z-3">
+        class="md-primary md-raised" flex='33'>
         Codereview
         <md-tooltip>
             Codereview Details
@@ -49,12 +51,13 @@
         ng-click="vm.setDetails(delivery)"
         ng-dialog="/static/templates/deliveries/delivery-details.html"
         ng-dialog-controller="DeliveryDetailsController as vm"
-        class="btn btn-material-blue shadow-z-3">
+        class="md-primary md-raised" flex='33'>
         Jira
         <md-tooltip>
             Jira Details
         </md-tooltip>
         </md-button>
+        </div>
         <hr/>
         <div>
             <small><label for="badge"><span class="badge shadow-z-3">{{delivery.updated_at | date:"MM/dd/yyyy H:mm:ss"}}</span></label></small>
