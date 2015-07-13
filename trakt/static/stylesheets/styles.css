@@ -1,45 +1,77 @@
 [ng\:cloak], [ng-cloak], .ng-cloak {
-display: none !important;
+  display: none !important;
 }
-.no-deliveries-here {
-text-align: center;
+
+md-card{
+  background-color: rgb(224, 224, 224);
+  border-radius: 15px;
 }
-.delivery__meta {
-text-align: center;
-padding-bottom: 1px;
+
+/*md-card-content .inner{
+  background-color: rgb(255, 255, 255);
+  border-radius: 0 0 15px 15px;
+}*/
+
+md-toolbar{
+  background-color: rgba(14, 40, 147, 0.83);
+  color: rgba(255, 255, 255, 0.87);
+  border-radius: 15px 15px 0px 0px;
 }
+
+.md-button.md-primary.md-raised, .md-button.md-primary.md-fab {
+  color: rgba(255,255,255,0.87);
+  background-color: rgba(0, 0, 0, 0.34);
+}
+
 .btn-add-new-delivery {
 position: fixed;
 bottom: 40px;
 right: 40px;
 }
+
 .ngdialog-content {
 width :600px !important;
 height :auto !important;
 }
+
 table td {
 border-top: none !important;
 }
 
-.animate-enter, 
-.animate-leave
-{ 
-  -webkit-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-  -moz-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-  -ms-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-  -o-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-  transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-  position: relative;
-  display: block;
-} 
-
-.animate-leave.animate-leave-active,
-.animate-enter {
-    -webkit-transform: scaleY(0);
-    -moz-transform: scaleY(0);
-    -ms-transform: scaleY(0);
-    -o-transform: scaleY(0);
-    transform: scaleY(0);
-    height: 0px;
-    opacity: 0;
+/*Animation*/
+md-card .ng-enter {
+  /* standard transition code */
+  -webkit-transition: 1s linear all;
+  opacity:0;
 }
+md-card .ng-enter-stagger {
+  /* this will have a 100ms delay between each successive leave animation */
+  -webkit-transition-delay: 0.1s;
+
+  /* in case the stagger doesn't work then the duration value
+   must be set to 0 to avoid an accidental CSS inheritance */
+  transition-duration: 0s;
+}
+md-card .ng-enter.ng-enter-active {
+  /* standard transition styles */
+  opacity:1;
+}
+
+md-card .ng-leave {
+  /* standard transition code */
+  transition: 1s linear all;
+  opacity:1;
+}
+md-card .ng-leave-stagger {
+  /* this will have a 100ms delay between each successive leave animation */
+  transition-delay: 0.0s;
+
+  /* in case the stagger doesn't work then the duration value
+   must be set to 0 to avoid an accidental CSS inheritance */
+  transition-duration: 0.01s;
+}
+md-card .ng-leave.ng-leave-active {
+  /* standard transition styles */
+  opacity:0;
+}
+

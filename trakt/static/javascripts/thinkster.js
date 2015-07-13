@@ -9,6 +9,7 @@
 			'thinkster.layout',
 			'thinkster.utils',
 			'thinkster.deliveries',
+			'ui.bootstrap',
 			'ngMaterial',
 			'ngMessages',
 			'ngAnimate'

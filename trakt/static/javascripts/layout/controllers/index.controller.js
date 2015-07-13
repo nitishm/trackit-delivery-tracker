@@ -20,18 +20,52 @@
         vm.isAuthenticated = Authentication.isAuthenticated();
         vm.deliveries = [];
         vm.setDetails = setDetails;
+        vm.getJiraId = getJiraId;
 
         vm.streams = ['KIRK', 'KRAMER', 'KESSLER', 'BART', 'HOMER', 'TROI', 'SPOCK'];
         activate();
 
+        /**
+         * [setDetails Pass all the delivery details to use across controllers]
+         * @param {[delivery]} delivery [Delivery object data]
+         */
         function setDetails(delivery) {
             Deliveries.setDetails(delivery);
         }
 
         /**
-         * @name activate
-         * @desc Actions to be performed when this controller is instantiated
-         * @memberOf thinkster.layout.controllers.IndexController
+         * [stripTrailingSlash Strip trailing slash if present in URL]
+         * @param  {[str]} str [URL]
+         * @return {[str]}     [stripped URL]
+         */
+        function stripTrailingSlash(str) {
+            if(str.substr(-1) === '/') {
+                return str.substr(0, str.length - 1);
+            }
+            return str;
+        }
+
+        /**
+         * [getLastUrlParam Get the last string from the URL]
+         * @param  {[str]} url [Original URL]
+         * @return {[type]}     [Last parameter from URL]
+         */
+        function getLastUrlParam(url) {
+            return url.split("/").pop()
+        }
+
+        /**
+         * [getJiraId Return the JIRA ID from the URL]
+         * @param  {[url]} jira_url [Jira URL]
+         * @return {[str]}          [Jira ID]
+         */
+        function getJiraId(jira_url) {
+            return getLastUrlParam(stripTrailingSlash(jira_url));
+        }
+
+        /**
+         * [activate description]
+         * @return {[type]} [description]
          */
         function activate() {
             if (Authentication.isAuthenticated()) {

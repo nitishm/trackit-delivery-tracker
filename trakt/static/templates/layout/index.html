@@ -1,5 +1,6 @@
-<md-content class="md-padding" style="height: 600px;" layout-fill>
-	<h1 class="md-display-3" ng-show="vm.deliveries && vm.deliveries.length">Current Deliveries</h1>
+<md-content class="md-padding" layout-fill ng-if="vm.deliveries.length">
+	<section class="md-padding">
+	<h1 class="md-display-3 md-padding" ng-show="vm.deliveries && vm.deliveries.length">Current Deliveries</h1>
 	<p class="delivery__meta" ng-show="!vm.deliveries.length">No deliveries to show</p>
 	<!-- FILTER AND CHIPS -->
 	<div layout="row" class="md-padding">
@@ -17,25 +18,22 @@
 			<input ng-model="search">
 		</md-input-container>
 	</div>
+	</section>
 	<!-- End FILTER AND CHIPS -->
 	<!-- Deliveries main content -->
-	<div class="md-padding">
+	<div>
 		<md-list>
 			<!-- Streams loop -->
-			<md-card ng-repeat="stream in vm.streams">
+			<md-card ng-repeat="stream in vm.streams | filter: stream" class="shadow-z-2" ng-hide="!filtered.length">
 		        <md-card-title>
-					<md-toolbar class="md-theme-dark shadow-z-3">
-						<h2 class="md-toolbar-tools">
+						<md-toolbar class="md-toolbar-tools">
 							<span>{{stream | uppercase}}</span>
-						</h2>
-					</md-toolbar>
+						</md-toolbar>
 		        </md-card-title>
 		        <md-card-content layout="row" layout-wrap>
 		        	<!-- Deliveries loop -->
-					<div ng-repeat="delivery in vm.deliveries | filter:stream | filter:search | orderBy:'updated_at'"
-						ng-animate="'animate'"
-						style="display: inline-block; padding:25px;"
-						flex='33'>
+					<div ng-repeat="delivery in filtered = (vm.deliveries | filter:stream | filter:search | orderBy:'updated_at')"
+						style="display: inline-block; padding: 0px 10px 10px 0px;" flex='33'>
 						<delivery delivery="delivery" vm="vm" ng-show="vm.deliveries && vm.deliveries.length"></delivery>
 					</div><!-- End Deliveries loop -->
 		        </md-card-content><!-- End Streams loop -->
