@@ -1,0 +1,33 @@
+{
+  "name": "trackit-delivery-tracker",
+  "version": "0.0.0",
+  "homepage": "https://github.com/nitishm/trackit-delivery-tracker",
+  "authors": [
+    "Nitish Malhotra <nitish.malhotra@gmail.com>"
+  ],
+  "description": "A delivery tracker and integrated web portal for JIRA/CODEREIVEW/CC items",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.2",
+    "angular-animate": "~1.4.2",
+    "angular-aria": "~1.4.2",
+    "angular-bootstrap": "~0.13.0",
+    "angular-cookies": "~1.4.2",
+    "angular-material": "~0.10.0",
+    "angular-messages": "~1.4.2",
+    "angular-route": "~1.4.2",
+    "arrive": "~2.2.0",
+    "bootstrap": "~3.3.5",
+    "bootstrap-material-design": "~0.3.0",
+    "jquery": "~2.1.4",
+    "ngDialog": "~0.4.0",
+    "underscore": "~1.8.3"
+  }
+}
