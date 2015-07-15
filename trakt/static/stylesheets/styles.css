@@ -2,20 +2,10 @@
   display: none !important;
 }
 
-md-card{
-  background-color: rgb(224, 224, 224);
-  border-radius: 15px;
-}
 
-/*md-card-content .inner{
-  background-color: rgb(255, 255, 255);
-  border-radius: 0 0 15px 15px;
-}*/
-
-md-toolbar{
+md-toolbar.md-toolbar-navbar{
   background-color: rgba(14, 40, 147, 0.83);
   color: rgba(255, 255, 255, 0.87);
-  border-radius: 15px 15px 0px 0px;
 }
 
 .md-button.md-primary.md-raised, .md-button.md-primary.md-fab {
@@ -30,7 +20,7 @@ right: 40px;
 }
 
 .ngdialog-content {
-width :600px !important;
+width :1000px !important;
 height :auto !important;
 }
 
@@ -38,13 +28,28 @@ table td {
 border-top: none !important;
 }
 
+md-subheader.streamname {
+  border-radius: 25px 25px 25px 25px;
+  background-color: inherit;
+}
+
+.delivery {
+  border-radius: 30px 5px 30px 5px;
+  background-color: rgba(53, 75, 164, 0.57);
+  margin: 5px;
+  padding: 1px 1px 20px 1px;
+}
+
+/*.delivery:hover {
+  box-shadow: 0 6px 16px #888888;
+}*/
 /*Animation*/
-md-card .ng-enter {
+.stream.ng-enter {
   /* standard transition code */
-  -webkit-transition: 1s linear all;
+  -webkit-transition: 1s ease-in all;
   opacity:0;
 }
-md-card .ng-enter-stagger {
+.ng-enter-stagger {
   /* this will have a 100ms delay between each successive leave animation */
   -webkit-transition-delay: 0.1s;
 
@@ -52,17 +57,17 @@ md-card .ng-enter-stagger {
    must be set to 0 to avoid an accidental CSS inheritance */
   transition-duration: 0s;
 }
-md-card .ng-enter.ng-enter-active {
+.ng-enter.ng-enter-active {
   /* standard transition styles */
   opacity:1;
 }
 
-md-card .ng-leave {
+.ng-leave {
   /* standard transition code */
   transition: 1s linear all;
   opacity:1;
 }
-md-card .ng-leave-stagger {
+.ng-leave-stagger {
   /* this will have a 100ms delay between each successive leave animation */
   transition-delay: 0.0s;
 
@@ -70,7 +75,7 @@ md-card .ng-leave-stagger {
    must be set to 0 to avoid an accidental CSS inheritance */
   transition-duration: 0.01s;
 }
-md-card .ng-leave.ng-leave-active {
+.ng-leave.ng-leave-active {
   /* standard transition styles */
   opacity:0;
 }

@@ -1,43 +1,44 @@
 <md-content class="md-padding" layout-fill ng-if="vm.deliveries.length">
-	<section class="md-padding">
-	<h1 class="md-display-3 md-padding" ng-show="vm.deliveries && vm.deliveries.length">Current Deliveries</h1>
-	<p class="delivery__meta" ng-show="!vm.deliveries.length">No deliveries to show</p>
+	<section layout="column" class="md-padding">
+	<div layout="row" layout-fill>
+		<h1 ng-show="vm.deliveries && vm.deliveries.length" flex='33' layout-fill style="font-size: 70px;font-family: monospace; font-variant: small-caps;">Current Deliveries</h1>
+		<div layout="column" flex>
+			<div flex='50'>
+				<label>Stream tags</label>
+				<md-chips ng-model="vm.streams" placeholder="Add a stream to view below">
+				</md-chips>
+			</div>
+			<md-input-container ng-show="vm.deliveries && vm.deliveries.length" flex='50'>
+				<label>Filter</label>
+				<input ng-model="search">
+			</md-input-container>
+		</div>
+	</div>
 	<!-- FILTER AND CHIPS -->
 	<div layout="row" class="md-padding">
-		<span flex></span>
-		<div flex='90'>
-			<label>Stream tags</label>
-			<md-chips ng-model="vm.streams" placeholder="Add a stream to view below">
-			</md-chips>
-		</div>
-		<span flex></span>
-	</div>
-	<div layout="row" class="md-padding">
-		<md-input-container ng-show="vm.deliveries && vm.deliveries.length" flex>
-			<label>Filter</label>
-			<input ng-model="search">
-		</md-input-container>
 	</div>
 	</section>
 	<!-- End FILTER AND CHIPS -->
 	<!-- Deliveries main content -->
-	<div>
-		<md-list>
-			<!-- Streams loop -->
-			<md-card ng-repeat="stream in vm.streams | filter: stream" class="shadow-z-2" ng-hide="!filtered.length">
-		        <md-card-title>
-						<md-toolbar class="md-toolbar-tools">
-							<span>{{stream | uppercase}}</span>
-						</md-toolbar>
-		        </md-card-title>
-		        <md-card-content layout="row" layout-wrap>
+	<div layout="column" layout-align="end end">
+		<div flex>
+		    <md-button class="md-fab md-raised md-mini"><</md-button>
+		    <md-button class="md-fab md-raised md-mini">></md-button>
+		</div>	
+		<md-list layout="row" layout-fill>
+			<!-- Streams loop -->		
+			<div ng-repeat="stream in vm.streams | filter: stream | limitTo: 3" class="stream" ng-animate="'animate'" ng-hide="!filtered.length" flex>
+					<md-subheader class="streamname">
+						<span class="md-toolbar">{{stream | uppercase}}</span>
+					</md-subheader>
+		        <div layout="row" layout-wrap>
 		        	<!-- Deliveries loop -->
 					<div ng-repeat="delivery in filtered = (vm.deliveries | filter:stream | filter:search | orderBy:'updated_at')"
-						style="display: inline-block; padding: 0px 10px 10px 0px;" flex='33'>
+						 flex='100'>
 						<delivery delivery="delivery" vm="vm" ng-show="vm.deliveries && vm.deliveries.length"></delivery>
 					</div><!-- End Deliveries loop -->
-		        </md-card-content><!-- End Streams loop -->
-			</md-card>
+		        </div><!-- End Streams loop -->
+			</div>
 	    </md-list>
 	</div>
 	<!-- Show Add button only when authenticated -->
