@@ -20,16 +20,16 @@
 	</section>
 	<!-- End FILTER AND CHIPS -->
 	<!-- Deliveries main content -->
-	<div layout="column" layout-align="end end">
+	<div layout="column" layout-align="end end" ng-init="start=0">
 		<div flex>
-		    <md-button class="md-fab md-raised md-mini"><</md-button>
-		    <md-button class="md-fab md-raised md-mini">></md-button>
+		    <md-button class="md-fab md-raised md-mini" ng-click="start=start-1" ng-disabled="!start"><</md-button>
+		    <md-button class="md-fab md-raised md-mini" ng-click="start=start+1" ng-disabled="start>vm.streams.length-4">></md-button>
 		</div>	
 		<md-list layout="row" layout-fill>
 			<!-- Streams loop -->		
-			<div ng-repeat="stream in vm.streams | filter: stream | limitTo: 3" class="stream" ng-animate="'animate'" ng-hide="!filtered.length" flex>
+			<div ng-repeat="stream in vm.streams | filter: stream | startFrom: start | limitTo: 3" class="stream" ng-animate="'animate'" ng-hide="!filtered.length" flex>
 					<md-subheader class="streamname">
-						<span class="md-toolbar">{{stream | uppercase}}</span>
+						<span>{{stream | uppercase}}</span>
 					</md-subheader>
 		        <div layout="row" layout-wrap>
 		        	<!-- Deliveries loop -->

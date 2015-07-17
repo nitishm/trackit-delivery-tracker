@@ -22,7 +22,7 @@
         vm.setDetails = setDetails;
         vm.getJiraId = getJiraId;
 
-        vm.streams = ['KIRK', 'KRAMER', 'KESSLER', 'BART', 'HOMER', 'TROI', 'SPOCK'];
+        vm.streams = [];
         activate();
 
         /**
@@ -76,6 +76,7 @@
 
             $scope.$on('delivery.created', function(event, delivery) {
                 vm.deliveries.unshift(delivery);
+                vm.streams = getStreams(vm.deliveries);
             });
 
             $scope.$on('delivery.updated', function(event, delivery) {
@@ -89,7 +90,15 @@
                 }
             });
 
-
+            function getStreams(deliveries) {
+                var flags = {}, output = [], l = vm.deliveries.length, i, streams = [];
+                for( i=0; i<l; i++) {
+                    if( flags[vm.deliveries[i].stream_name] ) continue;
+                    flags[vm.deliveries[i].stream_name] = true;
+                    streams.push(vm.deliveries[i].stream_name);
+                }
+                return streams
+            }
 
             /**
              * [deliveriesSuccessFn description]
@@ -101,6 +110,7 @@
              */
             function deliveriesSuccessFn(data, status, headers, config) {
                 vm.deliveries = data.data;
+                vm.streams = getStreams(vm.deliveries);
             }
 
 

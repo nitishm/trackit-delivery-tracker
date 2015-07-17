@@ -20,7 +20,7 @@ right: 40px;
 }
 
 .ngdialog-content {
-width :1000px !important;
+width :auto !important;
 height :auto !important;
 }
 
@@ -31,6 +31,10 @@ border-top: none !important;
 md-subheader.streamname {
   border-radius: 25px 25px 25px 25px;
   background-color: inherit;
+  font-weight: 800;
+  font-size: 20px;
+  font-family: monospace;
+  color: rgb(53, 75, 164)
 }
 
 .delivery {
@@ -44,39 +48,30 @@ md-subheader.streamname {
   box-shadow: 0 6px 16px #888888;
 }*/
 /*Animation*/
-.stream.ng-enter {
-  /* standard transition code */
+
+/*.stream.ng-enter {
   -webkit-transition: 1s ease-in all;
   opacity:0;
 }
 .ng-enter-stagger {
-  /* this will have a 100ms delay between each successive leave animation */
   -webkit-transition-delay: 0.1s;
 
-  /* in case the stagger doesn't work then the duration value
-   must be set to 0 to avoid an accidental CSS inheritance */
   transition-duration: 0s;
 }
 .ng-enter.ng-enter-active {
-  /* standard transition styles */
   opacity:1;
 }
 
 .ng-leave {
-  /* standard transition code */
   transition: 1s linear all;
   opacity:1;
 }
 .ng-leave-stagger {
-  /* this will have a 100ms delay between each successive leave animation */
   transition-delay: 0.0s;
 
-  /* in case the stagger doesn't work then the duration value
-   must be set to 0 to avoid an accidental CSS inheritance */
   transition-duration: 0.01s;
 }
 .ng-leave.ng-leave-active {
-  /* standard transition styles */
   opacity:0;
-}
+}*/
 
