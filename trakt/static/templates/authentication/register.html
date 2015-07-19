@@ -10,11 +10,25 @@
 		<form role="form" ng-submit="vm.register()" name="registerForm">
 			<md-input-container>
 				<label>Email</label>
-				<input type="text" ng-model="vm.email" required/>
+				<input type="email" ng-model="vm.email" required/>
 				<div ng-messages="registerForm.email.$error" ng-if='registerForm.email.$dirty'>
 					<div ng-message="required">This is required.</div>
 				</div>
 			</md-input-container>
+			<md-input-container>
+				<label>First Name</label>
+				<input type="text" ng-model="vm.first_name"/>	
+				<div ng-messages="registerForm.first_name.$error" ng-if='registerForm.first_name.$dirty'>
+					<div ng-message="required">This is required.</div>
+				</div>
+			</md-input-container>
+			<md-input-container>
+				<label>Last Name</label>
+				<input type="text" ng-model="vm.last_name"/>	
+				<div ng-messages="registerForm.last_name.$error" ng-if='registerForm.last_name.$dirty'>
+					<div ng-message="required">This is required.</div>
+				</div>
+			</md-input-container>			
 			<md-input-container>
 				<label>Username</label>
 				<input type="text" ng-model="vm.username"/>	

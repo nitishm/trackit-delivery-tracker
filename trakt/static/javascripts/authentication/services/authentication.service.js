@@ -9,13 +9,13 @@
 		.module('thinkster.authentication.services')
 		.factory('Authentication', Authentication);
 
-	Authentication.$inject = ['$cookies', '$http'];
+	Authentication.$inject = ['$cookies', '$http', 'Snackbar'];
 
 	/**
 	 * @namespace Authentication
 	 * @returns {Factory}
 	 */
-	function Authentication($cookies, $http) {
+	function Authentication($cookies, $http, Snackbar) {
 		/**
 		 * @name Authentication
 		 * @desc The Factory to be returned
@@ -43,9 +43,11 @@
 		 * @returns {Promise}
 		 * @memberOf thinkster.authentication.services.Authentication
 		 */
-		function register(email, password, username) {
+		function register(email, first_name, last_name, password, username) {
 			return $http.post('/api/v1/accounts/', {
 				username: username,
+				first_name: first_name,
+				last_name: last_name,
 				password: password,
 				email: email
 			}).then(registerSuccessFn, registerErrorFn);
@@ -63,7 +65,7 @@
 			 * @desc Log "Epic failure!" to the console
 			 */
 			function registerErrorFn(data, status, headers, config) {
-				console.error('Epic failure!');
+                Snackbar.error(data.data.message);
 			}
 		}
 
@@ -96,7 +98,7 @@
 			 * @desc Log "Epic failure!" to the console
 			 */
 			function loginErrorFn(data, status, headers, config) {
-				console.error('Epic failure!');
+                Snackbar.error(data.data.message);
 			}
 		}
 

@@ -1,5 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+
 
 class AccountManager(BaseUserManager):
     '''Create a custom user manager which overrides the BaseUserManager'''
@@ -11,8 +12,10 @@ class AccountManager(BaseUserManager):
             raise ValueError('Users must have a valid username.')
 
         account = self.model(
-            email=self.normalize_email(email), username=kwargs.get('username')
-        )
+            email=self.normalize_email(email),
+            username=kwargs.get('username'),
+            first_name=kwargs.get('first_name'),
+            last_name=kwargs.get('last_name'))
 
         account.set_password(password)
         account.save()
@@ -46,7 +49,7 @@ class Account(AbstractBaseUser):
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
-    
+
     def __unicode__(self):
         return self.email
 

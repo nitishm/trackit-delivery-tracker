@@ -21,7 +21,7 @@
         vm.deliveries = [];
         vm.setDetails = setDetails;
         vm.getJiraId = getJiraId;
-
+        vm.getInitials = getInitials;
         vm.streams = [];
         activate();
 
@@ -63,6 +63,9 @@
             return getLastUrlParam(stripTrailingSlash(jira_url));
         }
 
+        function getInitials(author) {
+            return author.first_name.charAt(0) + author.last_name.charAt(0)
+        }
         /**
          * [activate description]
          * @return {[type]} [description]

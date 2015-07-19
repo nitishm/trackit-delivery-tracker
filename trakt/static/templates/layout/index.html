@@ -41,15 +41,16 @@
 			</div>
 	    </md-list>
 	</div>
-	<!-- Show Add button only when authenticated -->
-	<a class="btn btn-primary btn-fab btn-raised mdi-content-add btn-add-new-delivery"
-		href="javascript:void(0)"
-		ng-click="vm.setDetails(None)"
-		ng-show="vm.isAuthenticated"
-		ng-dialog="/static/templates/deliveries/delivery-action.html"
-		ng-dialog-controller="DeliveryController as vm">
-		<md-tooltip>
-		    Create Delivery
-	    </md-tooltip>
-	</a>
 </md-content>
+
+<!-- Show Add button only when authenticated -->
+<a class="btn btn-primary btn-fab btn-raised mdi-content-add btn-add-new-delivery"
+	href="javascript:void(0)"
+	ng-click="vm.setDetails(None)"
+	ng-show="vm.isAuthenticated"
+	ng-dialog="/static/templates/deliveries/delivery-action.html"
+	ng-dialog-controller="DeliveryController as vm">
+	<md-tooltip>
+	    Create Delivery
+    </md-tooltip>
+</a>

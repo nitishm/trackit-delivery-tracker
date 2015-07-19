@@ -2,7 +2,7 @@
     <div layout="row" layout-fill class="delivery-header">
         <md-button class="md-fab md-raised md-warn md-mini" ng-href="/{{delivery.author.username}}">
                 <!-- TODO : Get author initials  -->
-                CM
+                {{vm.getInitials(delivery.author)}}
             <md-tooltip md-direction="right">
                  {{delivery.author.username}}
             </md-tooltip>

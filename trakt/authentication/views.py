@@ -21,13 +21,15 @@ class LoginView(views.APIView):
 
         if account is not None:
             if account.is_active:
-                '''We want to store some information about this user in the browser 
-                if the login request succeeds, so we serialize the Account object 
-                found by authenticate() and return the resulting JSON as the response.
+                '''We want to store some information about this user
+                in the browser if the login request succeeds, so we serialize
+                the Account object found by authenticate() and return the
+                resulting JSON as the response.
                 '''
                 login(request, account)
 
-                serialized = AccountSerializer(account, context={'request' : request})
+                serialized = AccountSerializer(account,
+                                               context={'request': request})
 
                 return Response(serialized.data)
             else:
@@ -50,6 +52,7 @@ class LogoutView(views.APIView):
 
         return Response({}, status=status.HTTP_204_NO_CONTENT)
 
+
 class AccountViewSet(viewsets.ModelViewSet):
     lookup_field = 'username'
     queryset = Account.objects.all()
@@ -65,21 +68,24 @@ class AccountViewSet(viewsets.ModelViewSet):
         return (permissions.IsAuthenticated(), IsAccountOwner(),)
 
     def create(self, request):
-        '''Override create since serializer create would use the password verbatim.
+        '''Override create since serializer create would use the password
+        verbatim.
         Instead we use Account.object.create_user(data) to create the user.
-        When you create an object using the serializer's .save() method, 
-        the object's attributes are set literally. This means that a user 
-        registering with the password 'password' will have their password stored as 
-        'password'. This is bad for a couple of reasons: 1) Storing passwords in 
-        plain text is a massive security issue. 2) Django hashes and salts passwords 
-        before comparing them, so the user wouldn't be able to log in using 'password' 
-        as their password.'''
+        When you create an object using the serializer's .save() method,
+        the object's attributes are set literally. This means that a user
+        registering with the password 'password' will have their password
+        stored as 'password'. This is bad for a couple of reasons: 1) Storing
+        passwords in plain text is a massive security issue. 2) Django hashes
+        and salts passwords before comparing them, so the user wouldn't be able
+        to log in using 'password' as their password.'''
         serializer = self.serializer_class(data=request.data)
 
         if serializer.is_valid():
             Account.objects.create_user(**serializer.validated_data)
 
-            return Response(serializer.validated_data, status=status.HTTP_201_CREATED)
+            return Response(serializer.validated_data,
+                            status=status.HTTP_201_CREATED
+                            )
 
         return Response({
             'status': 'Bad request',
