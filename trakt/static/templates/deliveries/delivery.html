@@ -1,17 +1,11 @@
 <div layout="column" class="delivery">
     <div layout="row" layout-fill class="delivery-header">
-        <md-button class="md-fab md-raised md-warn md-mini" ng-href="/{{delivery.author.username}}">
-                <!-- TODO : Get author initials  -->
-                {{vm.getInitials(delivery.author)}}
-            <md-tooltip md-direction="right">
-                 {{delivery.author.username}}
-            </md-tooltip>
-        </md-button> 
         <md-button ng-click="vm.setDetails(delivery)"
                     ng-dialog="/static/templates/deliveries/delivery-details.html"
                     ng-dialog-controller="DeliveryDetailsController as vm"
-                    class="md-primary" style="text-transform: capitalize;" flex>
-            <h4 ng-bind="vm.getJiraId(delivery.jira_url) | uppercase"></h4>
+                    class="md-primary md-raised" style="text-transform: capitalize;   
+                    border-radius: 30px 5px 30px 5px;" flex>
+            <h4 class="delivery__title" ng-bind="vm.getJiraId(delivery.jira_url) | uppercase"></h4>
             <md-tooltip>
                 More delivery details
             </md-tooltip>
@@ -43,10 +37,17 @@
                 </md-button>
             </md-fab-actions>
         </md-fab-speed-dial>
+        <md-button class="md-fab md-raised md-warn md-mini" ng-href="/{{delivery.author.username}}">
+                <!-- TODO : Get author initials  -->
+            {{vm.getInitials(delivery.author)}}
+            <md-tooltip md-direction="right">
+                 {{delivery.author.username}}
+            </md-tooltip>
+        </md-button>     
     </div>
-    <div layout="row" layout-align="center center">
-    <small>{{delivery.activity_name}}</small>
-    </div>
+    <!-- <div layout="row" layout-align="center center">
+        <small>{{delivery.activity_name}}</small>
+    </div> -->
 <!--     <div collapse="!isCollapsed">
             <div class="panel-body">
                 <div layout="row" layout-align="center center">

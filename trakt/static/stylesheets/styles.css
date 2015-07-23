@@ -28,6 +28,13 @@ table td {
 border-top: none !important;
 }
 
+.header {
+  font-size: 70px;
+  font-family: monospace; 
+  font-variant: small-caps;
+  font-weight: 400;
+}
+
 md-subheader.streamname {
   border-radius: 25px 25px 25px 25px;
   background-color: inherit;
@@ -41,12 +48,17 @@ md-subheader.streamname {
   border-radius: 30px 5px 30px 5px;
   background-color: rgba(53, 75, 164, 0.57);
   margin: 5px;
-  padding: 1px 1px 20px 1px;
+  padding: 1px 1px 1px 1px;
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-/*.delivery:hover {
-  box-shadow: 0 6px 16px #888888;
-}*/
+.delivery:hover {
+  box-shadow: 0 16px 34px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
+}
+
+.delivery__title {
+  font-weight: 400;
+}
 /*Animation*/
 
 /*.stream.ng-enter {
