@@ -9,13 +9,13 @@
 		.module('thinkster.authentication.services')
 		.factory('Authentication', Authentication);
 
-	Authentication.$inject = ['$cookies', '$http', 'Snackbar'];
+	Authentication.$inject = ['$cookies', '$http', '$base64', 'Snackbar'];
 
 	/**
 	 * @namespace Authentication
 	 * @returns {Factory}
 	 */
-	function Authentication($cookies, $http, Snackbar) {
+	function Authentication($cookies, $http, $base64, Snackbar) {
 		/**
 		 * @name Authentication
 		 * @desc The Factory to be returned
@@ -78,7 +78,6 @@
 		 * @memberOf thinkster.authentication.services.Authentication
 		 */
 		function login(email, password) {
-
 			return $http.post('/api/v1/auth/login/', {
 				email: email,
 				password: password
@@ -91,6 +90,10 @@
 			function loginSuccessFn(data, status, headers, config) {
 				Authentication.setAuthenticatedAccount(data.data);
 				window.location = '/';
+				// var encoded = $base64.encode('nmalhotra:rpan@2001');
+				// console.log('Basic ' + encoded);
+				// return $http.get('https://ap-codereview.us.oracle.com/api/review-requests/30454/', {})
+				// 				.then(codereviewSuccessFn, codereviewErrorFn);
 			}
 
 			/**
@@ -100,7 +103,17 @@
 			function loginErrorFn(data, status, headers, config) {
                 Snackbar.error(data.data.message);
 			}
+
+			function codereviewSuccessFn(data, status, headers, config) {
+				console.log(data);
+			}
+
+			function codereviewErrorFn(data, status, header, config) {
+				console.log("Codereview Failed");
+				console.log(data);
+			}
 		}
+
 
 		/**
 		 * @name logout

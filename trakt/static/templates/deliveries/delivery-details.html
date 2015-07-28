@@ -1,10 +1,27 @@
-<table class="table">
-    <tr ng-repeat="(key,value) in vm.details">
-        <td>
-            <span class="label" ng-bind="key"></span>
-        </td>
-        <td>
-            <small ng-bind="value"></small>
-        </td>
-    </tr>
-</table>
+<md-tabs md-border-bottom ng-cloak>
+	<md-tab label="Codereview" ng-if=vm.show>
+		<h1 class="md-display-2">{{vm.codereviewDetails.summary}}</h1>
+		<p>Branch : {{vm.codereviewDetails.branch}}</p>
+		<p>Testing Done : {{vm.codereviewDetails.testing_done}}</p>
+		<p>Last Updated : {{vm.codereviewDetails.last_updated | date}}</p>
+		<p>Created : {{vm.codereviewDetails.time_added | date}}</p>
+		<p>Description : {{vm.codereviewDetails.description}}</p>
+	</md-tab>
+	<md-tab label="Jira">
+		<h1 class="md-display-2">Jira</h1>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.</p>
+	</md-tab>
+	<md-tab label="Details">
+		<h1 class="md-display-2">Details</h1>
+		<table class="table">
+		    <tr ng-repeat="(key,value) in vm.details">
+		        <td>
+		            <span class="label" ng-bind="key"></span>
+		        </td>
+		        <td>
+		            <small ng-bind="value"></small>
+		        </td>
+		    </tr>
+		</table>
+	</md-tab>
+</md-tabs>

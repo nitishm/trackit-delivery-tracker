@@ -12,7 +12,9 @@
 			'ui.bootstrap',
 			'ngMaterial',
 			'ngMessages',
-			'ngAnimate'
+			'ngAnimate',
+			'base64'
+
 		]);
 
 	angular
