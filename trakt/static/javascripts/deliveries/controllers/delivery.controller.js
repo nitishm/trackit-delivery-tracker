@@ -48,7 +48,7 @@
             $scope.closeThisDialog();
 
             var details = Deliveries.getDetails();
-            Deliveries.update(details.id, vm.stream_name, vm.activity_name, vm.view_name, vm.codereview, vm.jira, vm.description, vm.notes, vm.status)
+            Deliveries.update(details.id, vm.stream_name, vm.activity_name, vm.view_name, vm.jira, vm.codereview, vm.description, vm.notes, vm.status)
                 .then(updateDeliverySuccessFn, updateDeliveryErrorFn);
 
             /**
@@ -112,7 +112,7 @@
         function create() {
             $scope.closeThisDialog();
 
-            Deliveries.create(vm.stream_name, vm.activity_name, vm.view_name, vm.codereview, vm.jira, vm.description, vm.notes, vm.status)
+            Deliveries.create(vm.stream_name, vm.activity_name, vm.view_name, vm.jira, vm.codereview, vm.description, vm.notes, vm.status)
                 .then(createDeliverySuccessFn, createDeliveryErrorFn);
 
             /**

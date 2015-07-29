@@ -1,23 +1,29 @@
-<div layout="column" class="delivery">
-    <div layout="row" layout-fill class="delivery-header">
+<section layout="column">
+    <section layout="row">    
+        <md-caption ng-href="/{{delivery.author.username}}" flex offset="10">
+            <strong>{{delivery.author.first_name}} {{delivery.author.last_name}}</strong> - {{delivery.updated_at | date:'MM/dd/yyyy @ h:mma'}}
+        </md-caption> 
+    </section>
+    <section layout="row" layout-fill class="delivery">
         <md-button ng-click="vm.setDetails(delivery)"
                     ng-dialog="/static/templates/deliveries/delivery-details.html"
                     ng-dialog-controller="DeliveryDetailsController as vm"
-                    class="md-primary md-raised" style="text-transform: capitalize;   
-                    border-radius: 30px 5px 30px 5px;" flex>
+                    class="md-primary md-raised" id="jira-btn" flex>
             <h4 class="delivery__title" ng-bind="vm.getJiraId(delivery.jira_url) | uppercase"></h4>
             <md-tooltip>
                 More delivery details
             </md-tooltip>
         </md-button>        
-        <md-fab-speed-dial md-direction="left" class="md-scale" ng-if="vm.isAuthenticated">
+<!--         <md-fab-speed-dial md-direction="left" class="md-scale" ng-if="vm.isAuthenticated">
             <md-fab-trigger>
                 <md-button aria-label="menu" class="md-fab md-raised md-primary md-mini">
                     <md-icon md-svg-src="static/img/icons/menu.svg"></md-icon>
                 </md-button>
             </md-fab-trigger>
-            <md-fab-actions>
-                <md-button aria-label="update" class="md-fab md-raised md-primary md-mini"
+            <md-fab-actions> -->
+            <section ng-if="vm.isAuthenticated">
+                <md-button aria-label="update" class="md-fab md-raised md-primary md-mini tool-btn"
+                    id="tool-btn-update"
                     ng-click="vm.setDetails(delivery)"
                     ng-dialog="/static/templates/deliveries/delivery-action.html"
                     ng-dialog-controller="DeliveryController as vm">
@@ -26,7 +32,8 @@
                         Update Delivery
                     </md-tooltip>        
                 </md-button>
-                <md-button aria-label="destroy" class="md-fab md-raised md-primary md-mini"
+                <md-button aria-label="destroy" class="md-fab md-raised md-primary md-mini tool-btn"
+                    id="tool-btn-destroy"
                     ng-click="vm.setDetails(delivery)"
                     ng-dialog="/static/templates/deliveries/destroy-delivery.html"
                     ng-dialog-controller="DeliveryController as vm">
@@ -35,16 +42,10 @@
                         Destroy Delivery
                     </md-tooltip>
                 </md-button>
-            </md-fab-actions>
-        </md-fab-speed-dial>
-        <md-button class="md-fab md-raised md-warn md-mini" ng-href="/{{delivery.author.username}}">
-                <!-- TODO : Get author initials  -->
-            {{vm.getInitials(delivery.author)}}
-            <md-tooltip md-direction="right">
-                 {{delivery.author.username}}
-            </md-tooltip>
-        </md-button>     
-    </div>
+                </section>
+<!--             </md-fab-actions>
+        </md-fab-speed-dial>   -->
+    </section>
     <!-- <div layout="row" layout-align="center center">
         <small>{{delivery.activity_name}}</small>
     </div> -->
@@ -130,4 +131,4 @@
             </md-fab-actions>
         </md-toolbar>
     </md-fab-toolbar> -->
-</div>
+</section>

@@ -1,19 +1,16 @@
 <md-content class="md-padding" layout-fill ng-if="vm.deliveries.length">
 	<section layout="column" class="md-padding">
-	<div layout="row" layout-fill>
-		<h1 ng-show="vm.deliveries && vm.deliveries.length" flex='33' layout-fill class="header">Current Deliveries</h1>
 		<div layout="column" flex>
-			<div flex='50'>
-				<label>Stream tags</label>
-				<md-chips ng-model="vm.streams" placeholder="Add a stream to view below">
-				</md-chips>
-			</div>
-			<md-input-container ng-show="vm.deliveries && vm.deliveries.length" flex='50'>
+			<h1 ng-show="vm.deliveries && vm.deliveries.length" flex='33' layout-fill>Current Deliveries</h1>
+			<br>
+			<label>Stream tags</label>
+			<md-chips ng-model="vm.streams" placeholder="Add a stream to view below">
+			</md-chips>
+			<md-input-container ng-show="vm.deliveries && vm.deliveries.length">
 				<label>Filter</label>
 				<input ng-model="search">
 			</md-input-container>
 		</div>
-	</div>
 	<!-- FILTER AND CHIPS -->
 	<div layout="row" class="md-padding">
 	</div>
@@ -22,15 +19,15 @@
 	<!-- Deliveries main content -->
 	<div layout="column" layout-align="end end" ng-init="start=0">
 		<div flex>
-		    <md-button class="md-fab md-raised md-mini" ng-click="start=start-1" ng-disabled="!start"><</md-button>
-		    <md-button class="md-fab md-raised md-mini" ng-click="start=start+1" ng-disabled="start>vm.streams.length-4">></md-button>
+		    <md-button class="md-fab md-raised md-mini" ng-click="start=start-3" ng-disabled="!start"><</md-button>
+		    <md-button class="md-fab md-raised md-mini" ng-click="start=start+3" ng-disabled="start>vm.streams.length-4">></md-button>
 		</div>	
 		<md-list layout="row" layout-fill>
 			<!-- Streams loop -->		
-			<div ng-repeat="stream in vm.streams | filter: stream | startFrom: start | limitTo: 3" class="stream" ng-animate="'animate'" ng-hide="!filtered.length" flex>
-					<md-subheader class="streamname">
-						<span>{{stream | uppercase}}</span>
-					</md-subheader>
+			<div class="stream-div md-whiteframe-z4 stream-box" ng-repeat="stream in vm.streams | filter: stream | startFrom: start | limitTo: 3" class="stream" ng-animate="'animate'" ng-hide="!filtered.length" flex>
+					<h3 class="streamname">
+						{{stream | uppercase}}
+					</h3>
 		        <div layout="row" layout-wrap>
 		        	<!-- Deliveries loop -->
 					<div ng-repeat="delivery in filtered = (vm.deliveries | filter:stream | filter:search | orderBy:'updated_at')"
