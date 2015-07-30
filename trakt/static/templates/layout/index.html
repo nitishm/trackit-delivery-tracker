@@ -1,11 +1,15 @@
-<md-content class="md-padding" layout-fill ng-if="vm.deliveries.length">
-	<section layout="column" class="md-padding">
+<md-content class="index" ng-if="vm.deliveries.length">
+	<section layout="column" class="md-padding" flex>
 		<div layout="column" flex>
-			<h1 ng-show="vm.deliveries && vm.deliveries.length" flex='33' layout-fill>Current Deliveries</h1>
-			<br>
-			<label>Stream tags</label>
+			<label class="index">Stream tags</label>
 			<md-chips ng-model="vm.streams" placeholder="Add a stream to view below">
 			</md-chips>
+<!--
+########################################################################### 
+FIX ME : Cannot filter when scrolled to the next page. Need to address this 
+with some sort of manual filtering service.
+###########################################################################
+-->
 			<md-input-container ng-show="vm.deliveries && vm.deliveries.length">
 				<label>Filter</label>
 				<input ng-model="search">
@@ -17,31 +21,39 @@
 	</section>
 	<!-- End FILTER AND CHIPS -->
 	<!-- Deliveries main content -->
-	<div layout="column" layout-align="end end" ng-init="start=0">
+	<div layout="column" layout-align="center end" ng-init="start=0">
 		<div flex>
-		    <md-button class="md-fab md-raised md-mini" ng-click="start=start-3" ng-disabled="!start"><</md-button>
-		    <md-button class="md-fab md-raised md-mini" ng-click="start=start+3" ng-disabled="start>vm.streams.length-4">></md-button>
+		    <md-button class="md-fab md-raised md-mini tool-btn" ng-click="start=start-4" ng-disabled="!start"> < </md-button>
+		    <md-button class="md-fab md-raised md-mini tool-btn" ng-click="start=start+4" ng-disabled="start>vm.streams.length-5"> > </md-button>
 		</div>	
-		<md-list layout="row" layout-fill>
+		<md-list layout="row" layout-fill flex>
 			<!-- Streams loop -->		
-			<div class="stream-div md-whiteframe-z4 stream-box" ng-repeat="stream in vm.streams | filter: stream | startFrom: start | limitTo: 3" class="stream" ng-animate="'animate'" ng-hide="!filtered.length" flex>
-					<h3 class="streamname">
-						{{stream | uppercase}}
-					</h3>
-		        <div layout="row" layout-wrap>
+			<div class="stream-div" ng-repeat="stream in vm.streams | filter: stream | startFrom: start" class="stream" ng-animate="'animate'" ng-hide="!filtered.length" flex="25">
+				<h3 class="streamname">
+					{{stream | uppercase}}
+				</h3>
+				<hr/>
+		        <div layout="column">
 		        	<!-- Deliveries loop -->
 					<div ng-repeat="delivery in filtered = (vm.deliveries | filter:stream | filter:search | orderBy:'updated_at')"
-						 flex='100'>
+						 flex>
 						<delivery delivery="delivery" vm="vm" ng-show="vm.deliveries && vm.deliveries.length"></delivery>
 					</div><!-- End Deliveries loop -->
-		        </div><!-- End Streams loop -->
-			</div>
+		        </div>
+			</div><!-- End Streams loop -->
+			<span flex></span>
 	    </md-list>
 	</div>
 </md-content>
 
 <!-- Show Add button only when authenticated -->
-<a class="btn btn-primary btn-fab btn-raised mdi-content-add btn-add-new-delivery"
+<!--
+########################################################################### 
+FIX ME : Add a create entry ICON
+###########################################################################
+-->
+<md-button class="md-button md-fab md-raised"
+	id="tool-btn-add"
 	href="javascript:void(0)"
 	ng-click="vm.setDetails(None)"
 	ng-show="vm.isAuthenticated"
@@ -50,4 +62,5 @@
 	<md-tooltip>
 	    Create Delivery
     </md-tooltip>
-</a>
+    <!-- <md-icon md-svg-src="static/img/icons/create.svg"></md-icon> -->
+</md-button>

@@ -1,22 +1,43 @@
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;
 }
+#main {
+  padding: 4px;
+}
 
+#nav-title {
+  font-size: 1.5em;
+}
+
+md-content.index {
+  padding-top: 80px;
+  color: rgb(14, 40, 147);
+}
 
 md-toolbar.md-toolbar-navbar{
-  background-color: rgba(14, 40, 147, 0.83);
+  position: fixed;
+  background-color: rgba(14, 40, 147, 1);
   color: rgba(255, 255, 255, 0.87);
 }
 
-.md-button.md-primary.md-raised, .md-button.md-primary.md-fab {
+/*.md-button.md-primary.md-raised, .md-button.md-primary.md-fab {
   color: rgba(255,255,255,0.87);
   background-color: rgba(0, 0, 0, 0.34);
+}*/
+
+#tool-btn-add {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgba(109, 135, 195, 0.5);
 }
 
-.btn-add-new-delivery {
-position: fixed;
-bottom: 40px;
-right: 40px;
+#tool-btn-add:hover {
+  background-color:rgb(14, 40, 147);
+  box-shadow: 0 16px 34px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
+  color: white;
+  font-size: 1em;
+  text-align: center;
 }
 
 .ngdialog-content {
@@ -29,35 +50,41 @@ table td {
 }
 
 .header {
-  font-size: 70px;
-  font-family: monospace; 
-  font-variant: small-caps;
-  font-weight: 400;
-}
-
-.streamname {
-  background-color: #DAD9F0;
-  font-weight: 200;
+  font-size: 5em;
   color: rgb(53, 75, 164);
   margin-top:0px;
   margin-bottom: 20px;
   text-align: center;
+}
+
+.streamname {
+  font-size: 2em;
+  color: rgb(155, 166, 210);
+  padding: 10px;
+  text-align: center;
   font-weight: 300px;
 }
 
-/*.delivery {
+.stream-div #meta-data{
+  color: rgb(155, 166, 210);
+  font-size: 0.8em;
+}
+/*.stream-div {
   border-radius: 30px 5px 30px 5px;
-  background-color: rgba(53, 75, 164, 0.57);
-  margin: 5px;
-  padding: 1px 1px 1px 1px;
-  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}*/
+  background-color: rgba(218, 217, 240, 0.5);
+}
+*/
+.stream-div:hover .streamname{
+  color: rgb(14, 40, 147);
+  /*  
+  background-color: rgb(155, 166, 210);
+  border-radius: 30px 5px 30px 5px;
+  box-shadow: 0 16px 34px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
+  */
+}
 
-
-.stream-div {
-    margin: 8px;
-    padding: 10px;
-    background-color: #DAD9F0;
+.stream-div:hover #meta-data{
+  color: rgb(14, 40, 147);
 }
 
 .tool-btn {
@@ -65,47 +92,34 @@ table td {
 }
 
 #tool-btn-destroy {
-  background-color:rgba(230, 52, 11, 0.59);
+  background-color:rgba(230, 52, 11, 0.5);
+}
+
+#tool-btn-destroy:hover {
+  background-color:rgba(230, 52, 11, 1);
+  box-shadow: 0 16px 34px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
 }
 
 #tool-btn-update {
-  background-color:rgba(109, 135, 195, 0.59);
+  background-color:rgba(109, 135, 195, 0.5);
+}
+
+#tool-btn-update:hover {
+  background-color:rgba(109, 135, 195, 1);
+  box-shadow: 0 16px 34px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
 }
 
 #jira-btn {
     text-transform: capitalize;   
     border-radius: 30px 5px 30px 5px;
-    background-color: rgba(54, 76, 165, 0.64);
+    background-color: rgba(54, 76, 165, 0.5);
 }
 
 #jira-btn:hover {
+  background-color: rgba(54, 76, 165, 1);
   box-shadow: 0 16px 34px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
 }
 
-#jira-btn:hover h4{
-  font-weight: 400;
-}
-
-.stream-box {
-      text-transform: capitalize;   
-    border-radius: 30px 5px 30px 5px;
-}
-/*
-.delivery:hover {
-  box-shadow: 0 16px 34px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
-}
-
-.delivery:hover .delivery__title{
-  font-weight: 400;
-}
-
-.delivery:hover #btn{
-  box-shadow: 0 16px 34px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
-}
-
-.delivery__title {
-  font-weight: 200;
-}
 /*Animation*/
 
 .ng-enter {

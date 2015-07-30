@@ -1,8 +1,7 @@
-<div ng-controller="NavbarController as vm" layout="column">
-  <md-toolbar class="md-toolbar-navbar">
+  <md-toolbar class="md-toolbar-navbar" ng-controller="NavbarController as vm" layout="column" flex>
       <div class="md-toolbar-tools">
-        <h3>
-          <a href="/">Trackit - Delivery Tracker</a>
+        <h3 id="nav-title">
+          <a href="/">TRACKit</a>
         </h3>
         <span flex></span>
         {% if user.is_authenticated %}
@@ -25,4 +24,3 @@
         {% endif %}
       </div>
     </md-toolbar>
-</div>

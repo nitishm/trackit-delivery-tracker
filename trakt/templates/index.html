@@ -5,11 +5,10 @@
 		<base href="/" />
 		{% include 'stylesheets.html' %}
 	</head>
-	<body layout="column" class="ng-cloak">
+	<body layout="column">
+		<main flex>
 		{% include 'navbar-material.html' %}
-		<main class='md-padding'>
-			<div class="row">
-				<div class="ng-view"></div>
+			<div id="main" class="ng-view" flex>
 			</div>
 		</main>
 		{% include 'javascripts.html' %}

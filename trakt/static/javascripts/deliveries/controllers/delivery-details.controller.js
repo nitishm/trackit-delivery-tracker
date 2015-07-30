@@ -70,7 +70,6 @@
 				$mdToast.simple()
 				.content("Make sure you have accepted the security certificate warning when logging into codereview from chrome."+
 				" Manually accept this warning.")
-				.hideDelay(3000)
 			);
 
 		}	

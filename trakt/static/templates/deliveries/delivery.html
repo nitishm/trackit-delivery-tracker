@@ -1,7 +1,13 @@
 <section layout="column">
     <section layout="row">    
-        <md-caption ng-href="/{{delivery.author.username}}" flex offset="10">
-            <strong>{{delivery.author.first_name}} {{delivery.author.last_name}}</strong> - {{delivery.updated_at | date:'MM/dd/yyyy @ h:mma'}}
+        <md-caption id="meta-data" ng-href="/{{delivery.author.username}}" flex offset="10" layout="row">
+            <strong flex ng-if="!vm.isAuthenticated">
+            {{delivery.author.first_name}} {{delivery.author.last_name}}
+            </strong> 
+            <span flex="20"  ng-if="!vm.isAuthenticated"></span>
+            <span flex>
+                {{delivery.updated_at | date:'MM/dd/yyyy @ h:mma'}}
+            </span>
         </md-caption> 
     </section>
     <section layout="row" layout-fill class="delivery">
