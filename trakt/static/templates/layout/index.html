@@ -1,4 +1,5 @@
 <md-content class="index" ng-if="vm.deliveries.length">
+	<!-- FILTER AND CHIPS -->
 	<section layout="column" class="md-padding" flex>
 		<div layout="column" flex>
 			<label class="index">Stream tags</label>
@@ -15,9 +16,6 @@ with some sort of manual filtering service.
 				<input ng-model="search">
 			</md-input-container>
 		</div>
-	<!-- FILTER AND CHIPS -->
-	<div layout="row" class="md-padding">
-	</div>
 	</section>
 	<!-- End FILTER AND CHIPS -->
 	<!-- Deliveries main content -->
@@ -26,13 +24,13 @@ with some sort of manual filtering service.
 		    <md-button class="md-fab md-raised md-mini tool-btn" ng-click="start=start-4" ng-disabled="!start"> < </md-button>
 		    <md-button class="md-fab md-raised md-mini tool-btn" ng-click="start=start+4" ng-disabled="start>vm.streams.length-5"> > </md-button>
 		</div>	
-		<md-list layout="row" layout-fill flex>
+		<md-list layout="row" layout-fill flex id="stream-list">
 			<!-- Streams loop -->		
-			<div class="stream-div" ng-repeat="stream in vm.streams | filter: stream | startFrom: start" class="stream" ng-animate="'animate'" ng-hide="!filtered.length" flex="25">
-				<h3 class="streamname">
+			<div id="stream-div" ng-repeat="stream in vm.streams | orderBy: stream | filter: stream | startFrom: start | limitTo: 4" ng-animate="'animate'" ng-hide="!filtered.length" flex="25">
+				<h3 id="streamname">
 					{{stream | uppercase}}
 				</h3>
-				<hr/>
+				<hr id="stream-divider"/>
 		        <div layout="column">
 		        	<!-- Deliveries loop -->
 					<div ng-repeat="delivery in filtered = (vm.deliveries | filter:stream | filter:search | orderBy:'updated_at')"

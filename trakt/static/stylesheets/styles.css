@@ -1,6 +1,7 @@
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;
 }
+
 #main {
   padding: 4px;
 }
@@ -19,11 +20,6 @@ md-toolbar.md-toolbar-navbar{
   background-color: rgba(14, 40, 147, 1);
   color: rgba(255, 255, 255, 0.87);
 }
-
-/*.md-button.md-primary.md-raised, .md-button.md-primary.md-fab {
-  color: rgba(255,255,255,0.87);
-  background-color: rgba(0, 0, 0, 0.34);
-}*/
 
 #tool-btn-add {
   position: fixed;
@@ -57,42 +53,98 @@ table td {
   text-align: center;
 }
 
-.streamname {
+.tool-btn {
+    margin: 6px 1px;
+}
+
+/*STREAM LIST*/
+#stream-list #streamname {
+  color: rgba(54, 76, 165, 1);
   font-size: 2em;
-  color: rgb(155, 166, 210);
   padding: 10px;
   text-align: center;
   font-weight: 300px;
 }
 
-.stream-div #meta-data{
-  color: rgb(155, 166, 210);
+#stream-list #meta-data{
   font-size: 0.8em;
+  color: rgba(54, 76, 165, 1);
 }
-/*.stream-div {
+
+#stream-list #jira-btn{
+  background-color: rgba(54, 76, 165, 1);
+  text-transform: capitalize;   
   border-radius: 30px 5px 30px 5px;
-  background-color: rgba(218, 217, 240, 0.5);
+  font-weight: 200;
 }
-*/
-.stream-div:hover .streamname{
-  color: rgb(14, 40, 147);
-  /*  
+
+#stream-list #tool-btn-update {
+  background-color: rgba(109, 135, 195, 0.9);
+}
+
+#stream-list #tool-btn-destroy {
+  background-color: rgba(230, 52, 11, 0.9);
+}
+/*STREAM LIST : HOVER*/
+#stream-list:hover #streamname{
+  color: rgb(155, 166, 210);
+}
+
+#stream-list:hover #meta-data{
+  color: rgb(155, 166, 210);
+}
+
+#stream-list:hover #jira-btn{
   background-color: rgb(155, 166, 210);
-  border-radius: 30px 5px 30px 5px;
+}
+
+#stream-list:hover #tool-btn-update {
+  background-color: rgba(109, 135, 195, 0.5);
+}
+
+#stream-list:hover #tool-btn-destroy {
+  background-color: rgba(230, 52, 11, 0.5);
+}
+/*END STREAM LIST*/
+
+
+/*STREAM DIV : HOVER*/
+#stream-div:hover #streamname{ 
+  color: rgba(54, 76, 165, 1);
+}
+
+#stream-div:hover #stream-divider {
+  background-color: rgba(54, 76, 165, 1);
+}
+
+#stream-div:hover #meta-data { 
+  color: rgba(54, 76, 165, 1);
+  font-weight: 200;
+}
+
+#stream-div:hover #jira-btn { 
+  background-color: rgba(54, 76, 165, 1);
+}
+
+#stream-div:hover #tool-btn-update {
+  background-color:rgba(109, 135, 195, 0.9);
+}
+
+#stream-div:hover #tool-btn-destroy {
+  background-color:rgba(230, 52, 11, 0.9);
+}
+
+#stream-div:hover #streamname {
+  font-weight: 300;
+}/*END STREAM DIV : HOVER*/
+
+/*BUTTON HOVER*/
+#jira-btn:hover {
   box-shadow: 0 16px 34px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
-  */
 }
 
-.stream-div:hover #meta-data{
-  color: rgb(14, 40, 147);
-}
-
-.tool-btn {
-    margin: 6px 1px;
-}
-
-#tool-btn-destroy {
-  background-color:rgba(230, 52, 11, 0.5);
+#jira-btn:hover #jira-id {
+  font-weight: 400;
 }
 
 #tool-btn-destroy:hover {
@@ -100,37 +152,24 @@ table td {
   box-shadow: 0 16px 34px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
 }
 
-#tool-btn-update {
-  background-color:rgba(109, 135, 195, 0.5);
-}
-
 #tool-btn-update:hover {
   background-color:rgba(109, 135, 195, 1);
   box-shadow: 0 16px 34px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
 }
+/*END BUTTON : HOVER*/
 
-#jira-btn {
-    text-transform: capitalize;   
-    border-radius: 30px 5px 30px 5px;
-    background-color: rgba(54, 76, 165, 0.5);
-}
-
-#jira-btn:hover {
-  background-color: rgba(54, 76, 165, 1);
-  box-shadow: 0 16px 34px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
-}
-
-/*Animation*/
-
+/*ANIMATIONS*/
 .ng-enter {
   -webkit-transition: 1s ease-in all;
   opacity:0;
 }
-/*.ng-enter-stagger {
+
+.ng-enter-stagger {
   -webkit-transition-delay: 0.1s;
 
   transition-duration: 0s;
-}*/
+}
+
 .ng-enter.ng-enter-active {
   opacity:1;
 }
@@ -139,12 +178,14 @@ table td {
   -webkit-transition: 0s linear all;
   opacity:1;
 }
-/*.ng-leave-stagger {
-  transition-delay: 0.0s;
+
+.ng-leave-stagger {
+  transition-delay: 0.1s;
 
   transition-duration: 0.01s;
-}*/
+}
+
 .ng-leave.ng-leave-active {
   opacity:0;
 }
-
+/*END ANIMATIONS*/

@@ -1,140 +1,37 @@
 <section layout="column">
     <section layout="row">    
         <md-caption id="meta-data" ng-href="/{{delivery.author.username}}" flex offset="10" layout="row">
-            <strong flex ng-if="!vm.isAuthenticated">
+            <strong ng-if="!vm.isAuthenticated" flex>
             {{delivery.author.first_name}} {{delivery.author.last_name}}
             </strong> 
-            <span flex="20"  ng-if="!vm.isAuthenticated"></span>
+            <span ng-if="!vm.isAuthenticated" flex="20"></span>
             <span flex>
                 {{delivery.updated_at | date:'MM/dd/yyyy @ h:mma'}}
             </span>
         </md-caption> 
     </section>
-    <section layout="row" layout-fill class="delivery">
+    <section class="delivery" layout="row" layout-fill>
         <md-button ng-click="vm.setDetails(delivery)"
                     ng-dialog="/static/templates/deliveries/delivery-details.html"
                     ng-dialog-controller="DeliveryDetailsController as vm"
                     class="md-primary md-raised" id="jira-btn" flex>
-            <h4 class="delivery__title" ng-bind="vm.getJiraId(delivery.jira_url) | uppercase"></h4>
-            <md-tooltip>
-                More delivery details
-            </md-tooltip>
+            <h4 id="jira-id" ng-bind="vm.getJiraId(delivery.jira_url) | uppercase"></h4>
         </md-button>        
-<!--         <md-fab-speed-dial md-direction="left" class="md-scale" ng-if="vm.isAuthenticated">
-            <md-fab-trigger>
-                <md-button aria-label="menu" class="md-fab md-raised md-primary md-mini">
-                    <md-icon md-svg-src="static/img/icons/menu.svg"></md-icon>
-                </md-button>
-            </md-fab-trigger>
-            <md-fab-actions> -->
-            <section ng-if="vm.isAuthenticated">
-                <md-button aria-label="update" class="md-fab md-raised md-primary md-mini tool-btn"
-                    id="tool-btn-update"
-                    ng-click="vm.setDetails(delivery)"
-                    ng-dialog="/static/templates/deliveries/delivery-action.html"
-                    ng-dialog-controller="DeliveryController as vm">
-                    <md-icon md-svg-src="static/img/icons/create.svg"></md-icon>
-                    <md-tooltip>
-                        Update Delivery
-                    </md-tooltip>        
-                </md-button>
-                <md-button aria-label="destroy" class="md-fab md-raised md-primary md-mini tool-btn"
-                    id="tool-btn-destroy"
-                    ng-click="vm.setDetails(delivery)"
-                    ng-dialog="/static/templates/deliveries/destroy-delivery.html"
-                    ng-dialog-controller="DeliveryController as vm">
-                    <md-icon md-svg-src="static/img/icons/clear.svg"></md-icon>
-                    <md-tooltip>
-                        Destroy Delivery
-                    </md-tooltip>
-                </md-button>
-                </section>
-<!--             </md-fab-actions>
-        </md-fab-speed-dial>   -->
-    </section>
-    <!-- <div layout="row" layout-align="center center">
-        <small>{{delivery.activity_name}}</small>
-    </div> -->
-<!--     <div collapse="!isCollapsed">
-            <div class="panel-body">
-                <div layout="row" layout-align="center center">
-                    <md-button ng-click="vm.setDetails(delivery)"
-                    ng-dialog="/static/templates/deliveries/delivery-details.html"
-                    ng-dialog-controller="DeliveryDetailsController as vm"
-                    class="md-primary" style="text-transform: capitalize;">Details
-                        <md-tooltip>
-                            Delivery Details
-                        </md-tooltip>
-                    </md-button>
-                    <md-button ng-click="vm.setDetails(delivery)"
-                    ng-dialog="/static/templates/deliveries/delivery-details.html"
-                    ng-dialog-controller="DeliveryDetailsController as vm"
-                    class="md-primary" style="text-transform: capitalize;">Codereview
-                        <md-tooltip>
-                            Codereview Details
-                        </md-tooltip>        
-                    </md-button>
-                    <md-button ng-click="vm.setDetails(delivery)"
-                    ng-dialog="/static/templates/deliveries/delivery-details.html"
-                    ng-dialog-controller="DeliveryDetailsController as vm"
-                    class="md-primary" style="text-transform: capitalize;">Jira
-                        <md-tooltip>
-                            Jira Details
-                        </md-tooltip>
-                    </md-button>
-                </div>
-            </div>
-    </div> -->
-    <!-- <md-card-content class="inner" layout="column" ng-init="isCollapsed = false">
-        <div collapse="isCollapsed">
-            <div class="panel-body">
-                <div layout="row" layout-align="center center">
-                    <md-button ng-click="vm.setDetails(delivery)"
-                    ng-dialog="/static/templates/deliveries/delivery-details.html"
-                    ng-dialog-controller="DeliveryDetailsController as vm"
-                    class="md-primary" style="text-transform: capitalize;">Details
-                        <md-tooltip>
-                            Delivery Details
-                        </md-tooltip>
-                    </md-button>
-                    <md-button ng-click="vm.setDetails(delivery)"
-                    ng-dialog="/static/templates/deliveries/delivery-details.html"
-                    ng-dialog-controller="DeliveryDetailsController as vm"
-                    class="md-primary" style="text-transform: capitalize;">Codereview
-                        <md-tooltip>
-                            Codereview Details
-                        </md-tooltip>        
-                    </md-button>
-                    <md-button ng-click="vm.setDetails(delivery)"
-                    ng-dialog="/static/templates/deliveries/delivery-details.html"
-                    ng-dialog-controller="DeliveryDetailsController as vm"
-                    class="md-primary" style="text-transform: capitalize;">Jira
-                        <md-tooltip>
-                            Jira Details
-                        </md-tooltip>
-                    </md-button>
-                </div>
-            </div>
-        </div>
-    </md-card-content> -->
-<!--         <md-fab-toolbar class="md-right">
-        <md-fab-trigger class="align-with-text">
-            <md-button aria-label="menu" class="md-fab md-primary">
-                <md-icon md-svg-src="static/img/icons/menu.svg"></md-icon>
+        <section ng-if="vm.isAuthenticated">
+            <md-button aria-label="update" class="md-fab md-raised md-primary md-mini tool-btn"
+                id="tool-btn-update"
+                ng-click="vm.setDetails(delivery)"
+                ng-dialog="/static/templates/deliveries/delivery-action.html"
+                ng-dialog-controller="DeliveryController as vm">
+                <md-icon md-svg-src="static/img/icons/create.svg"></md-icon>    
             </md-button>
-        </md-fab-trigger>
-        <md-toolbar>
-            <md-fab-actions class="md-toolbar-tools">
-                <md-button aria-label="comment" class="md-icon-button">
-                <md-icon md-svg-src="static/img/icons/menu.svg"></md-icon>
-                </md-button>
-                <md-button aria-label="label" class="md-icon-button">
-                <md-icon md-svg-src="static/img/icons/menu.svg"></md-icon>
-                </md-button>
-                <md-button aria-label="photo" class="md-icon-button">
-                <md-icon md-svg-src="static/img/icons/menu.svg"></md-icon>
-                </md-button>
-            </md-fab-actions>
-        </md-toolbar>
-    </md-fab-toolbar> -->
+            <md-button aria-label="destroy" class="md-fab md-raised md-primary md-mini tool-btn"
+                id="tool-btn-destroy"
+                ng-click="vm.setDetails(delivery)"
+                ng-dialog="/static/templates/deliveries/destroy-delivery.html"
+                ng-dialog-controller="DeliveryController as vm">
+                <md-icon md-svg-src="static/img/icons/clear.svg"></md-icon>
+            </md-button>
+        </section>
+    </section>
 </section>
