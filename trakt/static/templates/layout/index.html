@@ -12,21 +12,25 @@ with some sort of manual filtering service.
 ###########################################################################
 -->
 			<md-input-container ng-show="vm.deliveries && vm.deliveries.length">
-				<label>Filter</label>
+				<label>
+					<md-icon md-svg-src="static/img/icons/search.svg"></md-icon>
+					Search
+				</label>
 				<input ng-model="search">
 			</md-input-container>
 		</div>
 	</section>
 	<!-- End FILTER AND CHIPS -->
 	<!-- Deliveries main content -->
-	<div layout="column" layout-align="center end" ng-init="start=0">
-		<div flex>
+	<div layout="column" layout-align="center center">
+<!--<div layout="column" layout-align="center center" ng-init="start=0">
+ 		<div flex>
 		    <md-button class="md-fab md-raised md-mini tool-btn" ng-click="start=start-4" ng-disabled="!start"> < </md-button>
 		    <md-button class="md-fab md-raised md-mini tool-btn" ng-click="start=start+4" ng-disabled="start>vm.streams.length-5"> > </md-button>
-		</div>	
-		<md-list layout="row" layout-fill flex id="stream-list">
+		</div>	 -->
+		<md-list layout="row" layout-fill flex id="stream-list" layout-wrap>
 			<!-- Streams loop -->		
-			<div id="stream-div" ng-repeat="stream in vm.streams | orderBy: stream | filter: stream | startFrom: start | limitTo: 4" ng-animate="'animate'" ng-hide="!filtered.length" flex="25">
+			<div id="stream-div" ng-repeat="stream in vm.streams | orderBy: stream | filter: stream | startFrom: start " ng-animate="'animate'" ng-hide="!filtered.length" flex="25">
 				<h3 id="streamname">
 					{{stream | uppercase}}
 				</h3>
@@ -60,5 +64,5 @@ FIX ME : Add a create entry ICON
 	<md-tooltip>
 	    Create Delivery
     </md-tooltip>
-    <!-- <md-icon md-svg-src="static/img/icons/create.svg"></md-icon> -->
+    <md-icon md-svg-src="static/img/icons/note_add.svg"></md-icon>
 </md-button>

@@ -1,8 +1,15 @@
 <form role="form" ng-submit="vm.destroy()">
-	<div class="form-group">
-		<h3 style="text-align: center;">Do you want to destroy {{vm.stream_name}}_{{vm.activity_name}}?</h3>
-		<button type="submit" class="btn btn-primary" style="text-align: center;">
-		Yes
-		</button>
+	<div layout="column" layout-fill>
+		<div class="form-group" layout-align="center center">
+			<h3 style="text-align: center;">Do you really want to destroy {{vm.activity_name}} [{{vm.stream_name}}]?</h3>
+			<hr/>
+			<div layout="row" flex>
+				<span flex></span>
+				<md-button type="submit" class="md-raised md-warn" flex>
+				Yes
+				</md-button>
+				<span flex></span>
+			</div>
+		</div>
 	</div>
 </form>

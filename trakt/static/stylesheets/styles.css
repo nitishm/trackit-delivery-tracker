@@ -36,9 +36,10 @@ md-toolbar.md-toolbar-navbar{
   text-align: center;
 }
 
-.ngdialog-content {
-width :auto !important;
-height :auto !important;
+.ngdialog-content{
+  -webkit-transform: translate3d(0,0,0);   
+  width: 700px !important;
+  height :auto !important;
 }
 
 table td {
@@ -58,6 +59,10 @@ table td {
 }
 
 /*STREAM LIST*/
+#stream-list {
+  padding: 0px;
+}
+
 #stream-list #streamname {
   color: rgba(54, 76, 165, 1);
   font-size: 2em;
