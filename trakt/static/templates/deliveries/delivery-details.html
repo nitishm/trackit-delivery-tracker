@@ -1,15 +1,4 @@
 <md-tabs md-border-bottom ng-cloak>
-	<md-tab label="Codereview" ng-if=vm.show layout="column">
-		<h1 class="md-display-2" flex>{{vm.codereviewDetails.summary}}</h1>
-		<p flex>Branch : {{vm.codereviewDetails.branch}}</p>
-		<p flex>Testing Done : {{vm.codereviewDetails.testing_done}}</p>
-		<p flex>Last Updated : {{vm.codereviewDetails.last_updated | date}}</p>
-		<p flex>Created : {{vm.codereviewDetails.time_added | date}}</p>
-		<p flex>Description : {{vm.codereviewDetails.description}}</p>
-	</md-tab>
-	<md-tab label="Jira" layout="column">
-		<p flex>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.</p>
-	</md-tab>
 	<md-tab label="Details" layout="column">
 		<div layout="row" layout-fill>
 			<div flex>
@@ -33,23 +22,24 @@
 			<h3>Jira</h3>
 			<md-caption><a href={{vm.details.jira_url}}>{{vm.details.jira_url}}</a></md-caption>
 		</div>
-		<div layout="row" layout-fill>		
-			<div flex>
-				<h3>Status</h3>
-				<md-caption>{{vm.details.status}}</md-caption>
-			</div>
-			<div flex>
-				<h3>Locked</h3>
-				<md-caption>{{vm.details.locked}}</md-caption>
-			</div>
-			<div flex>
-				<h3>Created</h3>
-				<md-caption>{{vm.details.created_at | date:'MM/dd/yyyy @ h:mma'}}</md-caption>
-			</div>
-			<div flex>
-				<h3>Updated</h3>
-				<md-caption>{{vm.details.updated_at | date:'MM/dd/yyyy @ h:mma'}}</md-caption>
-			</div>
+		<div>
+			<h3>Status</h3>
+			<md-caption>{{vm.details.status}}</md-caption>
 		</div>
+		<div>
+			<h3>Locked</h3>
+			<md-caption>{{vm.details.locked}}</md-caption>
+		</div>
+	</md-tab>
+	<md-tab label="Codereview" ng-if=vm.show layout="column">
+		<h1 class="md-display-2" flex>{{vm.codereviewDetails.summary}}</h1>
+		<p flex>Branch : {{vm.codereviewDetails.branch}}</p>
+		<p flex>Testing Done : {{vm.codereviewDetails.testing_done}}</p>
+		<p flex>Last Updated : {{vm.codereviewDetails.last_updated | date}}</p>
+		<p flex>Created : {{vm.codereviewDetails.time_added | date}}</p>
+		<p flex>Description : {{vm.codereviewDetails.description}}</p>
+	</md-tab>
+	<md-tab label="Jira" layout="column">
+		<p flex>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.</p>
 	</md-tab>
 </md-tabs>

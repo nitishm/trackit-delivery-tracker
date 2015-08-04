@@ -37,7 +37,7 @@
 	* @param  {[url]} jira_url [Jira URL]
 	* @return {[str]}          [Jira ID]
 	*/
-	function getCodereviewId(url) {
+	function getId(url) {
 		return getLastUrlParam(stripTrailingSlash(url));
 	}
 
@@ -49,29 +49,46 @@
 		var vm = this;
 		vm.details = Deliveries.getDetails();
 		vm.show = false;
-		var url = 'https://ap-codereview.us.oracle.com/api/review-requests/' + 
-				getCodereviewId(vm.details.codereview_url) + '?callback=JSON_CALLBACK';
-		$http.jsonp(url).then(codereviewSuccessFn, codereviewErrorFn);
+		var codereview_url = 'https://ap-codereview.us.oracle.com/api/review-requests/' + 
+				getId(vm.details.codereview_url) + '?callback=JSON_CALLBACK';
+		var jira_url = 'https://jira.oraclecorp.com/jira/rest/api/2/issue/' + 
+				getId(vm.details.jira_url);
+
+		$http.get(jira_url).then(jiraSuccessFn, jiraErrorFn).
+		then($http.jsonp(codereview_url).then(codereviewSuccessFn,codereviewErrorFn));
 
 		function codereviewSuccessFn(data, status, headers, config) {
 			vm.show = true;
+			console.log("Codereview Success");
 			vm.codereviewDetails = data.data.review_request;
 		}
 
 		function codereviewErrorFn(data, status, headers, config) {
 			vm.show = false;
-			// Snackbar.error(
-			// 	"Make sure you have accepted the security certificate warning when logging into codereview from chrome."+
-			// 	"Manually accept this warning."
-			// 	+ data.statusText + " : " + data.status);
-			// Snackbar.error(vm.details.codereview_url + " does not exist");
+			console.log("Codereview Failure");
+			console.log(data);
+			$mdToast.show(
+				$mdToast.simple()
+				.content("Codereview : Make sure you have accepted the security certificate warning when logging into codereview from chrome."+
+				" Manually accept this warning.")
+			);
+		}	
+
+		function jiraSuccessFn(data, status, header, config) {
+			console.log("JIRA Success");
+			console.log(data);
+		}
+
+		function jiraErrorFn(data, status, headers, config) {
+			console.log("JIRA Failure");
+			console.log(data);
 
 			$mdToast.show(
 				$mdToast.simple()
-				.content("Make sure you have accepted the security certificate warning when logging into codereview from chrome."+
+				.content("JIRA : Make sure you have accepted the security certificate warning when logging into codereview from chrome."+
 				" Manually accept this warning.")
 			);
 
-		}	
+		}
 	}
 })();
