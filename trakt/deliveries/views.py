@@ -2,6 +2,7 @@ import django_filters
 from rest_framework import permissions, viewsets
 from rest_framework.response import Response
 from rest_framework import filters
+from rest_framework.views import APIView
 
 from deliveries.models import Delivery
 from deliveries.permissions import IsAuthorOfDelivery
@@ -56,3 +57,11 @@ class AccountDeliveriesViewSet(viewsets.ViewSet):
         serializer = self.serializer_class(queryset, many=True, context={'request': request})
 
         return Response(serializer.data)
+
+#Use this as a template to get non-model objects
+class jiraView(APIView):
+    def get(self, request, *args, **kw): 
+        jiraId = request.GET.get('jiraid', None)     
+        result = jiraId
+        response = Response(result) 
+        return response
