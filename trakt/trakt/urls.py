@@ -24,7 +24,7 @@ urlpatterns = patterns(
     url(r'^api/v1/', include(accounts_router.urls)),
 
     #Use this as template for getting jira and other non model data
-    url(r'^api/v1/jira/', jiraView.as_view(), name='test'),
+    url(r'^api/v1/jira/(?P<jiraId>.+)/$', jiraView.as_view(), name='test'),
 
     url(r'^api/v1/auth/login/$', LoginView.as_view(), name='login'),
     url(r'^api/v1/auth/logout/$', LogoutView.as_view(), name='logout'),
