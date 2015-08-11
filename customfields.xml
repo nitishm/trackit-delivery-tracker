@@ -1,0 +1,44 @@
+<RECORD>
+<field><fieldname>Issue Type</fieldname><dbfield>issuetype</dbfield></field>
+<field><fieldname>Description</fieldname><dbfield>description</dbfield></field>
+<field><fieldname>Project</fieldname><dbfield>project</dbfield></field>
+<field><fieldname>Fix Version/s</fieldname><dbfield>fixVersions</dbfield></field>
+<field><fieldname>Dev Group</fieldname><dbfield>customfield_12510</dbfield></field>
+<field><fieldname>Sprint</fieldname><dbfield>customfield_10013</dbfield></field>
+<field><fieldname>Test Priority</fieldname><dbfield>customfield_11202</dbfield></field>
+<field><fieldname>Time Tracking</fieldname><dbfield>timetracking</dbfield></field>
+<field><fieldname>Error No 2</fieldname><dbfield>customfield_11620</dbfield></field>
+<field><fieldname>Source System</fieldname><dbfield>customfield_10005</dbfield></field>
+<field><fieldname>O/S</fieldname><dbfield>customfield_10800</dbfield></field>
+<field><fieldname>CQ ID</fieldname><dbfield>customfield_12504</dbfield></field>
+<field><fieldname>Attachment</fieldname><dbfield>attachment</dbfield></field>
+<field><fieldname>Database</fieldname><dbfield>customfield_10801</dbfield></field>
+<field><fieldname>Severity</fieldname><dbfield>customfield_10703</dbfield></field>
+<field><fieldname>Gen/Prt</fieldname><dbfield>customfield_10802</dbfield></field>
+<field><fieldname>Found In (Label)</fieldname><dbfield>customfield_10803</dbfield></field>
+<field><fieldname>Error Prefix</fieldname><dbfield>customfield_11618</dbfield></field>
+<field><fieldname>Confirmed</fieldname><dbfield>customfield_10705</dbfield></field>
+<field><fieldname>Fixed In (Label)</fieldname><dbfield>customfield_10804</dbfield></field>
+<field><fieldname>Third Party / QA Eng</fieldname><dbfield>customfield_10805</dbfield></field>
+<field><fieldname>Committed</fieldname><dbfield>customfield_10806</dbfield></field>
+<field><fieldname>Error No</fieldname><dbfield>customfield_11619</dbfield></field>
+<field><fieldname>Sup Rep</fieldname><dbfield>customfield_10807</dbfield></field>
+<field><fieldname>Broken</fieldname><dbfield>customfield_10808</dbfield></field>
+<field><fieldname>RDBMS Ver</fieldname><dbfield>customfield_10809</dbfield></field>
+<field><fieldname>Summary</fieldname><dbfield>summary</dbfield></field>
+<field><fieldname>Bug ID</fieldname><dbfield>customfield_10000</dbfield></field>
+<field><fieldname>Product Hierarchy</fieldname><dbfield>customfield_10100</dbfield></field>
+<field><fieldname>Customer</fieldname><dbfield>customfield_10001</dbfield></field>
+<field><fieldname>Priority</fieldname><dbfield>priority</dbfield></field>
+<field><fieldname>Fix By</fieldname><dbfield>customfield_10002</dbfield></field>
+<field><fieldname>Published</fieldname><dbfield>customfield_10200</dbfield></field>
+<field><fieldname>Book Title</fieldname><dbfield>customfield_12501</dbfield></field>
+<field><fieldname>Topic Header</fieldname><dbfield>customfield_12523</dbfield></field>
+<field><fieldname>Labels</fieldname><dbfield>labels</dbfield></field>
+<field><fieldname>Rel Status</fieldname><dbfield>customfield_10004</dbfield></field>
+<field><fieldname>Attachment URL</fieldname><dbfield>customfield_10018</dbfield></field>
+<field><fieldname>Bug URL</fieldname><dbfield>customfield_10019</dbfield></field>
+<field><fieldname>Affects Version/s</fieldname><dbfield>versions</dbfield></field>
+<field><fieldname>Due Date</fieldname><dbfield>duedate</dbfield></field>
+<field><fieldname>Assignee</fieldname><dbfield>assignee</dbfield></field>
+</RECORD>

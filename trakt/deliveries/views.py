@@ -1,3 +1,5 @@
+from jirafields import JiraFields
+
 import django_filters
 from rest_framework import permissions, viewsets
 from rest_framework.response import Response
@@ -61,7 +63,9 @@ class AccountDeliveriesViewSet(viewsets.ViewSet):
 #Use this as a template to get non-model objects
 class jiraView(APIView):
     def get(self, request, *args, **kw): 
-        jiraId = request.GET.get('jiraid', None)     
-        result = jiraId
-        response = Response(result) 
+        jiraId = kw['jiraId']   
+        jiraFieldsObj = JiraFields('/Users/nitish/trackit-delivery-tracker/customfields.xml')
+        fields = jiraFieldsObj.fields
+        response = Response(fields) 
         return response
+        
