@@ -1,12 +1,24 @@
 import xmltodict
 
 class JiraFields(object):
-	def __init__(self,jiraFieldsFilePath):
-		self.fields = dict()
+	def __init__(self,jiraFieldsFilePath, defectFilePath):
+		customFields = dict()
 		with open(jiraFieldsFilePath,'r') as f:
-			raw_field = f.read()
-			fields = xmltodict.parse(raw_field)
-			fieldlist = fields['RECORD']['field']
-			for field in fieldlist:
-				self.fields[field['dbfield']] = field['fieldname']
-			print self.fields
+			rawCustomFields = f.read()
+			parse = xmltodict.parse(rawCustomFields)
+			fields = parse['RECORD']['field']
+			for field in fields:
+				customFields[field['dbfield']] = field['fieldname']
+
+		with open(defectFilePath,'r') as f:
+			rawDefect = f.read()
+			parse = xmltodict.parse(rawDefect)
+			defectFields = parse['RECORD']
+
+		self.defectCleaned = dict()
+		for key,value in defectFields.iteritems():
+			 try:
+			 	self.defectCleaned[customFields[key]] = value
+			 except:
+			 	if not key.startswith('customfield'):
+				 	self.defectCleaned[key] = value

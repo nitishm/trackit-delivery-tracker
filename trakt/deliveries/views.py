@@ -64,8 +64,8 @@ class AccountDeliveriesViewSet(viewsets.ViewSet):
 class jiraView(APIView):
     def get(self, request, *args, **kw): 
         jiraId = kw['jiraId']   
-        jiraFieldsObj = JiraFields('/Users/nitish/trackit-delivery-tracker/customfields.xml')
-        fields = jiraFieldsObj.fields
-        response = Response(fields) 
+        jiraFieldsObj = JiraFields('/Users/nitish/trackit-delivery-tracker/customfields.xml',
+                                   '/Users/nitish/trackit-delivery-tracker/defect.xml')
+        defect = jiraFieldsObj.defectCleaned
+        response = Response(defect) 
         return response
-        
