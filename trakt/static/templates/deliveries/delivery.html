@@ -11,12 +11,15 @@
         </md-caption> 
     </section>
     <section class="delivery" layout="row" layout-fill>
-        <md-button ng-click="vm.setDetails(delivery)"
+        <!-- <md-button ng-click="vm.setDetails(delivery)"
                     ng-dialog="/static/templates/deliveries/delivery-details.html"
                     ng-dialog-controller="DeliveryDetailsController as vm"
                     class="md-primary md-raised" id="jira-btn" flex>
             <h4 id="jira-id" ng-bind="vm.getJiraId(delivery.jira_url) | uppercase"></h4>
-        </md-button>        
+        </md-button>     -->    
+        <md-button ng-click="vm.setDetails(delivery)" ng-href="/delivery/{{vm.getJiraId(delivery.jira_url)}}" class="md-primary md-raised" id="jira-btn" flex>
+            <h4 id="jira-id" ng-bind="vm.getJiraId(delivery.jira_url) | uppercase"></h4>
+        </md-button>
         <section ng-if="vm.isAuthenticated">
             <md-button aria-label="update" class="md-fab md-raised md-primary md-mini tool-btn"
                 id="tool-btn-update"

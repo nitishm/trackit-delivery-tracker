@@ -48,23 +48,25 @@
 	function DeliveryDetailsController($scope, $http, $mdToast, Authentication, Deliveries, Snackbar) {
 		var vm = this;
 		vm.details = Deliveries.getDetails();
-		vm.show = false;
+		console.log(vm.details);
+		vm.showCodereview = false;
+		vm.showJira = false;
 		var codereview_url = 'https://ap-codereview.us.oracle.com/api/review-requests/' + 
 				getId(vm.details.codereview_url) + '?callback=JSON_CALLBACK';
 		var jira_url = 'https://jira.oraclecorp.com/jira/rest/api/2/issue/' + 
 				getId(vm.details.jira_url);
 
-		$http.get(jira_url).then(jiraSuccessFn, jiraErrorFn).
-		then($http.jsonp(codereview_url).then(codereviewSuccessFn,codereviewErrorFn));
+		$http.get('/api/v1/jira/'+ getId(jira_url) + '/').then(jiraSuccessFn, jiraErrorFn).
+		then($http.jsonp(codereview_url).then(codereviewSuccessFn,codereviewErrorFn))
 
 		function codereviewSuccessFn(data, status, headers, config) {
-			vm.show = true;
+			vm.showCodereview = true;
 			console.log("Codereview Success");
 			vm.codereviewDetails = data.data.review_request;
 		}
 
 		function codereviewErrorFn(data, status, headers, config) {
-			vm.show = false;
+			vm.showCodereview = false;
 			console.log("Codereview Failure");
 			console.log(data);
 			$mdToast.show(
@@ -75,11 +77,14 @@
 		}	
 
 		function jiraSuccessFn(data, status, header, config) {
+			vm.showJira = true;
 			console.log("JIRA Success");
-			console.log(data);
+			console.log(data.data);
+			vm.jiraDetails = data.data
 		}
 
 		function jiraErrorFn(data, status, headers, config) {
+			vm.showJira = false;
 			console.log("JIRA Failure");
 			console.log(data);
 

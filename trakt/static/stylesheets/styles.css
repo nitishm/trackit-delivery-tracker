@@ -38,7 +38,7 @@ md-toolbar.md-toolbar-navbar{
 
 .ngdialog-content{
   -webkit-transform: translate3d(0,0,0);   
-  width: 700px !important;
+  width: 1000px !important;
   height :auto !important;
 }
 

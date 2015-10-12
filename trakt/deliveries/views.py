@@ -63,9 +63,8 @@ class AccountDeliveriesViewSet(viewsets.ViewSet):
 #Use this as a template to get non-model objects
 class jiraView(APIView):
     def get(self, request, *args, **kw): 
-        jiraId = kw['jiraId']   
-        jiraFieldsObj = JiraFields('/Users/nitish/trackit-delivery-tracker/customfields.xml',
-                                   '/Users/nitish/trackit-delivery-tracker/defect.xml')
+        jiraId = kw['jiraId']
+        jiraFieldsObj = JiraFields(jiraId)
         defect = jiraFieldsObj.defectCleaned
         response = Response(defect) 
         return response

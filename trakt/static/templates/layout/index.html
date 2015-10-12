@@ -37,7 +37,7 @@ with some sort of manual filtering service.
 				<hr id="stream-divider"/>
 		        <div layout="column">
 		        	<!-- Deliveries loop -->
-					<div ng-repeat="delivery in filtered = (vm.deliveries | filter:stream | filter:search | orderBy:'updated_at')"
+					<div ng-repeat="delivery in filtered = (vm.deliveries | filter: { stream_name: stream } | filter:search | orderBy:'updated_at')"
 						 flex>
 						<delivery delivery="delivery" vm="vm" ng-show="vm.deliveries && vm.deliveries.length"></delivery>
 					</div><!-- End Deliveries loop -->

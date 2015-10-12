@@ -20,6 +20,10 @@
 			controller: 'LoginController',
 			controllerAs: 'vm',
 			templateUrl: '/static/templates/authentication/login.html'
+		}).when('/delivery/:name', {
+			controller: 'DeliveryDetailsController',
+			controllerAs: 'vm',
+			templateUrl: '/static/templates/deliveries/delivery-details.html'
 		}).when('/', {
 			controller: 'IndexController',
 			controllerAs: 'vm',
